@@ -17,6 +17,13 @@ class Game:
             self.background = pygame.image.load(bg)
         self.screen.blit(self.background, self.screen.get_rect())
 
+        # this is probably gonne be temporary
+        # True = key is being held
+        self.controls = {
+            pygame.K_RIGHT: False,
+            pygame.K_LEFT: False
+        }
+
     def process_event(self, event: Event, dt: float) -> None:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
