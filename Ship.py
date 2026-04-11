@@ -12,11 +12,15 @@ class Ship:
         with SHIPASSET.open() as img:
             self.shipImg = pygame.image.load(img)
 
+        self.rect = self.shipImg.get_rect()
+
         self.x: float
         self.y: float
 
     def move_right(self, dt: float):
         self.x += MOVESPEED * dt
+        self.rect.x = round(self.x)
 
     def move_left(self, dt: float):
         self.x -= MOVESPEED * dt
+        self.rect.x = round(self.x)
