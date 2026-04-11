@@ -31,3 +31,9 @@ class Game:
         elif event.type == pygame.KEYUP:
             if event.key in self.controls.keys():
                 self.controls[event.key] = False
+
+    def update(self, dt: float) -> None:
+        if self.controls[pygame.K_RIGHT] and not self.controls[pygame.K_LEFT]:
+            self.ship.move_right(dt)
+        elif self.controls[pygame.K_LEFT] and not self.controls[pygame.K_RIGHT]:
+            self.ship.move_left(dt)
