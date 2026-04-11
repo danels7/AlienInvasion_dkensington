@@ -1,5 +1,9 @@
+from AlienInvasion import AlienInvasion
+
+
 def main():
-    pass
+    ai = AlienInvasion()
+    ai.run()
 
 
 if __name__ == "__main__":
