@@ -20,4 +20,5 @@ class AlienInvasion:
                     self.running = False
                 else:
                     self.game.process_event(event, dt)
-                    pygame.display.flip()
+            
+            pygame.display.flip()
