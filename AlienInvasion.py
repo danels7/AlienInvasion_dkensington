@@ -8,15 +8,17 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((1280, 720))
         pygame.display.set_caption("Alien Invasion")
         self.running = False
+        self.clock = pygame.time.Clock()
         self.game = Game(self.screen)
 
     def run(self):
         while self.running:
+            dt = self.clock.tick()
+
             events = pygame.event.get()
             for event in events:
                 if event.type == pygame.QUIT:
                     self.running = False
-
-            self.game.handle_events(events)
-
-            pygame.display.flip()
+                else:
+                    self.game.process_event(event)
+                    pygame.display.flip()
