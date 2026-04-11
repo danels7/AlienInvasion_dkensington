@@ -12,6 +12,7 @@ class AlienInvasion:
         self.game = Game(self.screen)
 
     def run(self):
+        self.running = True
         while self.running:
             events = pygame.event.get()
             dt = self.clock.tick() / 1000
