@@ -10,4 +10,8 @@ class Game:
         self.ship = Ship()
 
     def process_event(self, event: Event, dt: float) -> None:
-        pass
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                self.ship.move_right(dt)
+            elif event.key == pygame.K_LEFT:
+                self.ship.move_left(dt)
