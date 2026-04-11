@@ -9,16 +9,13 @@ MOVESPEED = 512 # ship speed in px/sec
 
 
 class Ship:
-    def __init__(self, screen: Surface, size: tuple[int, int]):
+    def __init__(self, screen: Surface, height: int):
         with SHIPASSET.open() as img:
             self.shipImg = pygame.image.load(img)
 
-        width = size[0]
-        height = size[1]
-
         self.rect = self.shipImg.get_rect()
-        self.rect.width = width
         self.rect.height = height
+        self.rect.width = round((height/self.shipImg.get_height()) * self.shipImg.get_width())
 
         self.screen = screen
 
