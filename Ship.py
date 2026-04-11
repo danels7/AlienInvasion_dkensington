@@ -22,11 +22,15 @@ class Ship:
         
         self.rect.x = round(self.x)
         self.rect.y = round(self.y)
+        
+        self.screen.blit(self.shipImg, self.rect)
 
     def move_right(self, dt: float):
         self.x += MOVESPEED * dt
         self.rect.x = round(self.x)
+        self.screen.blit(self.shipImg, self.rect)
 
     def move_left(self, dt: float):
         self.x -= MOVESPEED * dt
         self.rect.x = round(self.x)
+        self.screen.blit(self.shipImg, self.rect)
