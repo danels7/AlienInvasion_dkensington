@@ -22,6 +22,11 @@ class Ship:
         self.shipImg = pygame.transform.scale(shipImg, (self.rect.width, self.rect.height))
         del shipImg
 
+        self.xMin = 0
+        self.xMax = screenWidth
+        self.yMin = 0
+        self.yMax = screenHeight
+
         self.screen = screen
 
         self.x = (screenWidth / 2) - (self.rect.width / 2)
@@ -33,11 +38,12 @@ class Ship:
         self.draw()
 
     def move_right(self, dt: float) -> None:
-        self.x += MOVESPEED * dt
+        self.x = pygame.math.clamp(self.x + (MOVESPEED * dt), self.xMin, self.xMax)
         self.rect.x = round(self.x)
+        
 
     def move_left(self, dt: float) -> None:
-        self.x -= MOVESPEED * dt
+        self.x = pygame.math.clamp(self.x - (MOVESPEED * dt), self.xMin, self.xMax)
         self.rect.x = round(self.x)
 
     def draw(self) -> None:
