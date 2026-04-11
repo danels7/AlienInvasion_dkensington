@@ -24,9 +24,10 @@ class Game:
             pygame.K_LEFT: False
         }
 
-    def process_event(self, event: Event, dt: float) -> None:
+    def process_event(self, event: Event) -> None:
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT:
-                self.ship.move_right(dt)
-            elif event.key == pygame.K_LEFT:
-                self.ship.move_left(dt)
+            if event.key in self.controls.keys():
+                self.controls[event.key] = True
+        elif event.type == pygame.KEYUP:
+            if event.key in self.controls.keys():
+                self.controls[event.key] = False
