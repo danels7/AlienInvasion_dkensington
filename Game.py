@@ -7,5 +7,5 @@ class Game:
     def __init__(self, screen: Surface):
         self.screen = screen.subsurface(0, 0, screen.get_width(), screen.get_height())
 
-    def process_event(self, event: Event) -> None:
+    def process_event(self, event: Event, dt: float) -> None:
         pass
