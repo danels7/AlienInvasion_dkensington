@@ -37,3 +37,6 @@ class Game:
             self.ship.move_right(dt)
         elif self.controls[pygame.K_LEFT] and not self.controls[pygame.K_RIGHT]:
             self.ship.move_left(dt)
+        
+        self.screen.blit(self.background, self.screen.get_rect())
+        self.ship.draw()
