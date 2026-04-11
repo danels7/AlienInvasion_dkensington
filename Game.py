@@ -7,7 +7,7 @@ from Ship import Ship
 class Game:
     def __init__(self, screen: Surface):
         self.screen = screen.subsurface(0, 0, screen.get_width(), screen.get_height())
-        self.ship = Ship()
+        self.ship = Ship(self.screen)
 
     def process_event(self, event: Event, dt: float) -> None:
         if event.type == pygame.KEYDOWN:
