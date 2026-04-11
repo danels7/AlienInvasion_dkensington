@@ -25,13 +25,13 @@ class Ship:
         
         self.draw()
 
-    def move_right(self, dt: float):
+    def move_right(self, dt: float) -> None:
         self.x += MOVESPEED * dt
         self.rect.x = round(self.x)
 
-    def move_left(self, dt: float):
+    def move_left(self, dt: float) -> None:
         self.x -= MOVESPEED * dt
         self.rect.x = round(self.x)
 
-    def draw(self):
+    def draw(self) -> None:
         self.screen.blit(self.shipImg, self.rect)
