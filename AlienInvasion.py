@@ -1,4 +1,6 @@
 import pygame
+from Game import Game
+
 
 class AlienInvasion:
     def __init__(self):
@@ -6,13 +8,15 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((1280, 720))
         pygame.display.set_caption("Alien Invasion")
         self.running = False
+        self.game = Game(self.screen)
 
     def run(self):
         while self.running:
-            for event in pygame.event.get():
+            events = pygame.event.get()
+            for event in events:
                 if event.type == pygame.QUIT:
                     self.running = False
-            
-            # stuff
+
+            self.game.handle_events(events)
 
             pygame.display.flip()
