@@ -13,7 +13,7 @@ class Game:
         width = screen.get_width()
         height = screen.get_height()
         self.screen = screen.subsurface(0, 0, width, height)
-        self.ship = Ship(self.screen, height/20)
+        self.ship = Ship(self.screen)
 
         with BACKGROUNDASSET.open() as bg:
             self.background = pygame.image.load(bg)
