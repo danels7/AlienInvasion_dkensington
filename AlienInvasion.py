@@ -15,11 +15,12 @@ class AlienInvasion:
         self.running = True
         while self.running:
             events = pygame.event.get()
-            dt = self.clock.tick() / 1000
             for event in events:
                 if event.type == pygame.QUIT:
                     self.running = False
                 else:
-                    self.game.process_event(event, dt)
+                    self.game.process_event(event)
+
+            self.game.update(self.clock.tick() / 1000)
             
             pygame.display.flip()
