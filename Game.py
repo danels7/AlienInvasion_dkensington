@@ -10,8 +10,10 @@ BACKGROUNDASSET = util.image_asset("Starbasesnow.png")
 
 class Game:
     def __init__(self, screen: Surface):
-        self.screen = screen.subsurface(0, 0, screen.get_width(), screen.get_height())
-        self.ship = Ship(self.screen)
+        width = screen.get_width()
+        height = screen.get_height()
+        self.screen = screen.subsurface(0, 0, width, height)
+        self.ship = Ship(self.screen, height/20)
 
         with BACKGROUNDASSET.open() as bg:
             self.background = pygame.image.load(bg)
