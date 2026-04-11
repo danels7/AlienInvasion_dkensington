@@ -23,7 +23,7 @@ class Ship:
         del shipImg
 
         self.xMin = 0
-        self.xMax = screenWidth
+        self.xMax = screenWidth - self.rect.width
         self.yMin = 0
         self.yMax = screenHeight
 
