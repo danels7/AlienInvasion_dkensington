@@ -4,25 +4,23 @@ import util
 
 
 SHIPASSET = util.image_asset("ship2.png")
+with SHIPASSET.open() as img:
+    SHIPIMG = pygame.image.load(img)
 
 MOVESPEED = 512 # ship speed in px/sec
 
 
 class Ship:
     def __init__(self, screen: Surface):
-        with SHIPASSET.open() as img:
-            shipImg = pygame.image.load(img)
-
         self.screen = screen
 
         screenHeight = self.screen.get_height()
         screenWidth = self.screen.get_width()
 
-        self.rect = shipImg.get_rect()
+        self.rect = SHIPIMG.get_rect()
         scale = (screenHeight/15) / self.rect.height
         self.rect.scale_by_ip(scale, scale)
-        self.shipImg = pygame.transform.scale(shipImg, (self.rect.width, self.rect.height))
-        del shipImg
+        self.shipImg = pygame.transform.scale(SHIPIMG, (self.rect.width, self.rect.height))
 
         self.xMin = 0
         self.xMax = screenWidth - self.rect.width

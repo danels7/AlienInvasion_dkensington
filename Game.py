@@ -6,6 +6,8 @@ import util
 
 
 BACKGROUNDASSET = util.image_asset("Starbasesnow.png")
+with BACKGROUNDASSET.open() as img:
+    BACKGROUNDIMG = pygame.image.load(img)
 
 
 class Game:
@@ -15,8 +17,8 @@ class Game:
         self.screen = screen.subsurface(0, 0, width, height)
         self.ship = Ship(self.screen)
 
-        with BACKGROUNDASSET.open() as bg:
-            self.background = pygame.image.load(bg)
+        self.background = BACKGROUNDIMG.copy()
+
         self.screen.blit(self.background, self.screen.get_rect())
 
         # this is probably gonne be temporary
