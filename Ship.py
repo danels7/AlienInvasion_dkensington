@@ -1,5 +1,6 @@
 import pygame
 from pygame import Surface
+from VisualAsset import VisualAsset
 import util
 
 
@@ -10,17 +11,12 @@ with SHIPASSET.open() as img:
 MOVESPEED = 512 # ship speed in px/sec
 
 
-class Ship:
+class Ship(VisualAsset):
     def __init__(self, screen: Surface):
-        self.screen = screen
+        screenHeight = self.parent.get_height()
+        screenWidth = self.parent.get_width()
 
-        screenHeight = self.screen.get_height()
-        screenWidth = self.screen.get_width()
-
-        self.rect = SHIPIMG.get_rect()
-        scale = (screenHeight/15) / self.rect.height
-        self.rect.scale_by_ip(scale, scale)
-        self.shipImg = pygame.transform.scale(SHIPIMG, (self.rect.width, self.rect.height))
+        super().__init__(SHIPIMG, screen, (screenHeight/15) / SHIPIMG.get_height())
 
         self.xMin = 0
         self.xMax = screenWidth - self.rect.width
@@ -38,11 +34,7 @@ class Ship:
     def move_right(self, dt: float) -> None:
         self.x = pygame.math.clamp(self.x + (MOVESPEED * dt), self.xMin, self.xMax)
         self.rect.x = round(self.x)
-        
 
     def move_left(self, dt: float) -> None:
         self.x = pygame.math.clamp(self.x - (MOVESPEED * dt), self.xMin, self.xMax)
         self.rect.x = round(self.x)
-
-    def draw(self) -> None:
-        self.screen.blit(self.shipImg, self.rect)
