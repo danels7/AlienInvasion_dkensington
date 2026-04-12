@@ -1,5 +1,6 @@
 import pygame
-from pygame import Rect
+from pygame import Surface, Rect
+from VisualAsset import VisualAsset
 import util
 
 
@@ -8,11 +9,11 @@ with LASERASSET.open() as img:
     LASERIMG = pygame.image.load(img)
 
 
-class Laser:
-    def __init__(self, shipRect: Rect):
-        self.laserImg = pygame.transform.scale(LASERIMG, (shipRect.width, shipRect.height))
+class Laser(VisualAsset):
+    def __init__(self, screen: Surface, shipRect: Rect):
+        super().__init__(screen, LASERIMG, shipRect.height / LASERIMG.get_height())
 
-        self.rect = self.laserImg.get_rect()
+        self.rect = self.img.get_rect()
 
         self.x = shipRect.x + (shipRect.width/2) - (self.rect.width/2)
         self.y = shipRect.y + self.rect.height
