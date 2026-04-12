@@ -13,8 +13,10 @@ class Ship:
         with SHIPASSET.open() as img:
             shipImg = pygame.image.load(img)
 
-        screenHeight = screen.get_height()
-        screenWidth = screen.get_width()
+        self.screen = screen
+
+        screenHeight = self.screen.get_height()
+        screenWidth = self.screen.get_width()
 
         self.rect = shipImg.get_rect()
         scale = (screenHeight/15) / self.rect.height
@@ -26,8 +28,6 @@ class Ship:
         self.xMax = screenWidth - self.rect.width
         self.yMin = 0
         self.yMax = screenHeight
-
-        self.screen = screen
 
         self.x = (screenWidth / 2) - (self.rect.width / 2)
         self.y = screenHeight - self.rect.height
