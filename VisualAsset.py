@@ -1,8 +1,9 @@
 import pygame
 from pygame import Surface
+from abc import ABC
 
 
-class VisualAsset:
+class VisualAsset(ABC):
     def __init__(self, parentScreen: Surface, img: Surface, imgScale: float | None = None):
         if imgScale is None:
             self.img = img.copy()
