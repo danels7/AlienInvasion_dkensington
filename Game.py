@@ -25,7 +25,9 @@ class Game:
         # True = key is being held
         self.controls = {
             pygame.K_RIGHT: False,
-            pygame.K_LEFT: False
+            pygame.K_LEFT: False,
+            pygame.K_UP: False,
+            pygame.K_DOWN: False
         }
 
     def process_event(self, event: Event) -> None:
@@ -41,6 +43,11 @@ class Game:
             self.ship.move_right(dt)
         elif self.controls[pygame.K_LEFT] and not self.controls[pygame.K_RIGHT]:
             self.ship.move_left(dt)
+
+        if self.controls[pygame.K_RIGHT] and not self.controls[pygame.K_UP]:
+            self.ship.move_up(dt)
+        elif self.controls[pygame.K_LEFT] and not self.controls[pygame.K_DOWN]:
+            self.ship.move_down(dt)
         
         self.screen.blit(self.background, self.screen.get_rect())
         self.ship.draw()
