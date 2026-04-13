@@ -2,6 +2,7 @@ import pygame
 from pygame import Surface
 from pygame.event import Event
 from Ship import Ship
+from Laser import Laser
 import util
 
 
@@ -21,6 +22,8 @@ class Game:
 
         self.screen.blit(self.background, self.screen.get_rect())
 
+        self.lasers: list[Laser] = []
+
         # this is probably gonne be temporary
         # True = key is being held
         self.controls = {
@@ -34,6 +37,9 @@ class Game:
         if event.type == pygame.KEYDOWN:
             if event.key in self.controls.keys():
                 self.controls[event.key] = True
+            elif event.key == pygame.K_z:
+                self.lasers.append(self.ship.fire_laser())
+
         elif event.type == pygame.KEYUP:
             if event.key in self.controls.keys():
                 self.controls[event.key] = False
@@ -48,6 +54,9 @@ class Game:
             self.ship.move_up(dt)
         elif self.controls[pygame.K_UP] and not self.controls[pygame.K_DOWN]:
             self.ship.move_down(dt)
-        
+
         self.screen.blit(self.background, self.screen.get_rect())
         self.ship.draw()
+        for laser in self.lasers:
+            laser.move_up(dt)
+            laser.draw()
