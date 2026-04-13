@@ -38,3 +38,11 @@ class Ship(VisualAsset):
     def move_left(self, dt: float) -> None:
         self.x = pygame.math.clamp(self.x - (MOVESPEED * dt), self.xMin, self.xMax)
         self.rect.x = round(self.x)
+
+    def move_up(self, dt: float) -> None:
+        self.x = pygame.math.clamp(self.y - (MOVESPEED * dt), self.yMin, self.yMax)
+        self.rect.x = round(self.x)
+
+    def move_down(self, dt: float) -> None:
+        self.x = pygame.math.clamp(self.y - (MOVESPEED * dt), self.yMin, self.yMax)
+        self.rect.x = round(self.x)
