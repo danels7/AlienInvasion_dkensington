@@ -25,5 +25,5 @@ class Laser(VisualAsset):
         self.rect.y = round(self.y)
 
     def move_up(self, dt: float) -> None:
-        self.y += MOVESPEED * dt
+        self.y -= MOVESPEED * dt
         self.rect.y = round(self.y)
