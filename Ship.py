@@ -22,7 +22,7 @@ class Ship(VisualAsset):
         self.xMin = 0
         self.xMax = screenWidth - self.rect.width
         self.yMin = 0
-        self.yMax = screenHeight
+        self.yMax = screenHeight - self.rect.height
 
         self.x = (screenWidth / 2) - (self.rect.width / 2)
         self.y = screenHeight - self.rect.height
