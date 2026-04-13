@@ -59,4 +59,7 @@ class Game:
         self.ship.draw()
         for laser in self.lasers:
             laser.move_up(dt)
-            laser.draw()
+            if laser.is_off_screen():
+                self.lasers.remove(laser)
+            else:
+                laser.draw()
