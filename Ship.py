@@ -13,8 +13,8 @@ MOVESPEED = 512 # ship speed in px/sec
 
 class Ship(VisualAsset):
     def __init__(self, screen: Surface):
-        screenHeight = self.parent.get_height()
-        screenWidth = self.parent.get_width()
+        screenHeight = screen.get_height()
+        screenWidth = screen.get_width()
 
         super().__init__(SHIPIMG, screen, (screenHeight/15) / SHIPIMG.get_height())
 
