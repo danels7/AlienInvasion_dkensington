@@ -20,6 +20,8 @@ with BACKGROUNDASSET.open() as img:
 
 
 class Game:
+    """This class manages the game itself. It handles controls, events, assets, etc."""
+
     def __init__(self, screen: Surface):
         width = screen.get_width()
         height = screen.get_height()
@@ -42,6 +44,8 @@ class Game:
         }
 
     def process_event(self, event: Event) -> None:
+        """Takes an event and determines what, if anything, to do with it"""
+
         if event.type == pygame.KEYDOWN:
             if event.key in self.controls.keys():
                 self.controls[event.key] = True
@@ -53,6 +57,8 @@ class Game:
                 self.controls[event.key] = False
 
     def update(self, dt: float) -> None:
+        """Does what is necessary to update the state of assets, then redraws them"""
+
         if self.controls[pygame.K_RIGHT] and not self.controls[pygame.K_LEFT]:
             self.ship.move_right(dt)
         elif self.controls[pygame.K_LEFT] and not self.controls[pygame.K_RIGHT]:
