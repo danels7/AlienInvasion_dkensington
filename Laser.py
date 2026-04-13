@@ -32,3 +32,6 @@ class Laser(VisualAsset):
         self.rect.y = round(self.y)
         if self.rect.y == self.yMin:
             self.toppedOut = True
+
+    def is_off_screen(self) -> bool:
+        return self.toppedOut
