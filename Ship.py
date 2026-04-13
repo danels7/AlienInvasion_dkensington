@@ -1,6 +1,7 @@
 import pygame
 from pygame import Surface
 from VisualAsset import VisualAsset
+from Laser import Laser
 import util
 
 
@@ -46,3 +47,6 @@ class Ship(VisualAsset):
     def move_down(self, dt: float) -> None:
         self.y = pygame.math.clamp(self.y - (MOVESPEED * dt), self.yMin, self.yMax)
         self.rect.y = round(self.y)
+
+    def fire_laser(self) -> Laser:
+        return Laser(self.parent, self.rect)
