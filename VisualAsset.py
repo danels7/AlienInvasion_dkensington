@@ -11,7 +11,7 @@ class VisualAsset(ABC):
             width = img.get_width() * imgScale
             height = img.get_height() * imgScale
             self.img = pygame.transform.scale(img, (width, height))
-        self.rect = img.get_rect()
+        self.rect = self.img.get_rect()
         self.parent = parentScreen
 
     def draw(self) -> None:
