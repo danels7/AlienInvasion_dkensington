@@ -1,3 +1,11 @@
+"""
+AlienInvasion - Utility File
+Daniel Kensington
+This file if for supplemental functions to be used by the program
+4/12/2026
+"""
+
+
 from pathlib import Path
 
 
