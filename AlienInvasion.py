@@ -1,3 +1,11 @@
+"""
+Alien Invasion - Alien Invasion Class
+Daniel Kensington
+This file defines the class AlienInvasion. This class serves as the "starting point" for pygame, as well as the "manager" for the program
+4/12/2026
+"""
+
+
 import pygame
 from Game import Game
 
