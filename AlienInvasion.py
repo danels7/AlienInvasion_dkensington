@@ -11,6 +11,8 @@ from Game import Game
 
 
 class AlienInvasion:
+    """This class represents the core of the program. It creates the pygame instance and handles the core loop of the program"""
+
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((1280, 720))
@@ -20,6 +22,7 @@ class AlienInvasion:
         self.game = Game(self.screen)
 
     def run(self):
+        """Runs the game"""
         self.running = True
         while self.running:
             events = pygame.event.get()
