@@ -16,7 +16,7 @@ class Ship(VisualAsset):
         screenHeight = screen.get_height()
         screenWidth = screen.get_width()
 
-        super().__init__(SHIPIMG, screen, (screenHeight/15) / SHIPIMG.get_height())
+        super().__init__(screen, SHIPIMG, (screenHeight/15) / SHIPIMG.get_height())
 
         self.xMin = 0
         self.xMax = screenWidth - self.rect.width
