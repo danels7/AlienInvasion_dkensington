@@ -1,3 +1,11 @@
+"""
+Alien Invasion - Game Class
+Daniel Kensington
+This file defines the class Game. It is responsible for managing the game itself
+4/12/2026
+"""
+
+
 import pygame
 from pygame import Surface
 from pygame.event import Event
