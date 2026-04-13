@@ -1,3 +1,12 @@
+"""
+Alien Invasion - Laser Class
+Daniel Kensington
+This file defines the class Laser. It represents the lasers fired by the player's ship
+This class inherits from VisualAsset.
+4/12/2026
+"""
+
+
 import pygame
 from pygame import Surface, Rect
 from VisualAsset import VisualAsset
