@@ -1,3 +1,12 @@
+"""
+Alien Invasion - Ship Class
+Daniel Kensington
+The file defines the class Ship. It represents the ship that the player controls
+This class inherits from VisualAsset. 
+4/12/2026
+"""
+
+
 import pygame
 from pygame import Surface
 from VisualAsset import VisualAsset
