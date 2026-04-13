@@ -1,3 +1,11 @@
+"""
+Alien Invastion - Visual Asset Class
+Daniel Kensington
+This file defines the abstract base class VisualAsset, used for classes that represent visual assets
+4/12/2026
+"""
+
+
 import pygame
 from pygame import Surface
 from abc import ABC
