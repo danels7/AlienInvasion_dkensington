@@ -22,6 +22,8 @@ MOVESPEED = 576
 
 
 class Laser(VisualAsset):
+    """This class represents the lasers fired by the player's ship"""
+
     def __init__(self, screen: Surface, shipRect: Rect):
         super().__init__(screen, LASERIMG, shipRect.height / LASERIMG.get_height())
 
@@ -37,10 +39,12 @@ class Laser(VisualAsset):
         self.toppedOut = False
 
     def move_up(self, dt: float) -> None:
+        """Move the laser up"""
         self.y -= MOVESPEED * dt
         self.rect.y = round(self.y)
         if self.rect.y == self.yMin:
             self.toppedOut = True
 
     def is_off_screen(self) -> bool:
+        """Returns True if the laser has moved up off the screen, False otherwise"""
         return self.toppedOut
