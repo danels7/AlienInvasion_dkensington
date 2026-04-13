@@ -19,7 +19,7 @@ class Laser(VisualAsset):
         self.rect = self.img.get_rect()
 
         self.x = shipRect.x + (shipRect.width/2) - (self.rect.width/2)
-        self.y = shipRect.y + self.rect.height
+        self.y = shipRect.y - self.rect.height
         
         self.rect.x = round(self.x)
         self.rect.y = round(self.y)
