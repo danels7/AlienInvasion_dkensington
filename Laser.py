@@ -9,6 +9,9 @@ with LASERASSET.open() as img:
     LASERIMG = pygame.image.load(img)
 
 
+MOVESPEED = 576
+
+
 class Laser(VisualAsset):
     def __init__(self, screen: Surface, shipRect: Rect):
         super().__init__(screen, LASERIMG, shipRect.height / LASERIMG.get_height())
@@ -19,4 +22,8 @@ class Laser(VisualAsset):
         self.y = shipRect.y + self.rect.height
         
         self.rect.x = round(self.x)
+        self.rect.y = round(self.y)
+
+    def move_up(self, dt: float) -> None:
+        self.y += MOVESPEED * dt
         self.rect.y = round(self.y)
