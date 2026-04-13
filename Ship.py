@@ -29,8 +29,6 @@ class Ship(VisualAsset):
         
         self.rect.x = round(self.x)
         self.rect.y = round(self.y)
-        
-        self.draw()
 
     def move_right(self, dt: float) -> None:
         self.x = pygame.math.clamp(self.x + (MOVESPEED * dt), self.xMin, self.xMax)
