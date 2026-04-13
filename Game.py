@@ -51,9 +51,9 @@ class Game:
             self.ship.move_left(dt)
 
         if self.controls[pygame.K_DOWN] and not self.controls[pygame.K_UP]:
-            self.ship.move_up(dt)
-        elif self.controls[pygame.K_UP] and not self.controls[pygame.K_DOWN]:
             self.ship.move_down(dt)
+        elif self.controls[pygame.K_UP] and not self.controls[pygame.K_DOWN]:
+            self.ship.move_up(dt)
 
         self.screen.blit(self.background, self.screen.get_rect())
         self.ship.draw()
