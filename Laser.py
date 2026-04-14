@@ -25,7 +25,11 @@ class Laser(VisualAsset):
     """This class represents the lasers fired by the player's ship"""
 
     def __init__(self, screen: Surface, shipRect: Rect, rotState: int):
-        super().__init__(screen, LASERIMG, shipRect.height / LASERIMG.get_height())
+        if rotState % 2 == 0: # 0 or 2 (up or down)
+            super().__init__(screen, LASERIMG, shipRect.height / LASERIMG.get_height())
+        else: # 1 or 3 (left or right)
+            img = pygame.transform.rotate(LASERIMG, 90)
+            super().__init__(screen, img, shipRect.width / LASERIMG.get_height())
 
         self.rect = self.img.get_rect()
 
