@@ -35,18 +35,25 @@ class Laser(VisualAsset):
         halfWidth = shipRect.width / 2
         halfHeight = shipRect.height / 2
 
+        self.dx = 0
+        self.dy = 0
+
         if side == 0: # up
             placeY -= halfHeight + self.rect.height
             placeX -= halfWidth
+            self.dy = -MOVESPEED
         elif side == 1: # left
             placeX -= halfWidth + self.rect.width
             placeY -= halfHeight
+            self.dx = -MOVESPEED
         elif side == 2: # down
             placeY += halfHeight
             placeX -= halfWidth
+            self.dy = MOVESPEED
         else: # right (3)
             placeX += halfWidth
             placeY -= halfHeight
+            self.dx = MOVESPEED 
 
         self.x = placeX
         self.y = placeY
