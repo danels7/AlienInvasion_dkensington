@@ -39,15 +39,15 @@ class Laser(VisualAsset):
         self.yMax = self.parent.get_height()
         self.xMin = -self.rect.width
         self.xMax = self.parent.get_width()
-        self.toppedOut = False
+        self.offScreen = False
 
     def move_up(self, dt: float) -> None:
         """Move the laser up"""
         self.y -= MOVESPEED * dt
         self.rect.y = round(self.y)
         if self.rect.y == self.yMin:
-            self.toppedOut = True
+            self.offScreen = True
 
     def is_off_screen(self) -> bool:
         """Returns True if the laser has moved up off the screen, False otherwise"""
-        return self.toppedOut
+        return self.offScreen
