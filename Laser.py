@@ -24,14 +24,33 @@ MOVESPEED = 576
 class Laser(VisualAsset):
     """This class represents the lasers fired by the player's ship"""
 
-    def __init__(self, screen: Surface, shipRect: Rect):
+    def __init__(self, screen: Surface, shipRect: Rect, side: int):
         super().__init__(screen, LASERIMG, shipRect.height / LASERIMG.get_height())
 
         self.rect = self.img.get_rect()
 
-        self.x = shipRect.x + (shipRect.width/2) - (self.rect.width/2)
-        self.y = shipRect.y - self.rect.height
-        
+        placeX = shipRect.centerx
+        placeY = shipRect.centery
+
+        halfWidth = shipRect.width / 2
+        halfHeight = shipRect.height / 2
+
+        if side == 0: # up
+            placeY -= halfHeight + self.rect.height
+            placeX -= halfWidth
+        elif side == 1: # left
+            placeX -= halfWidth + self.rect.width
+            placeY -= halfHeight
+        elif side == 2: # down
+            placeY += halfHeight
+            placeX -= halfWidth
+        else: # right (3)
+            placeX += halfWidth
+            placeY -= halfHeight
+
+        self.x = placeX
+        self.y = placeY
+
         self.rect.x = round(self.x)
         self.rect.y = round(self.y)
 
