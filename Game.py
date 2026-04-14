@@ -49,7 +49,7 @@ class Game:
         if event.type == pygame.KEYDOWN:
             if event.key in self.controls.keys():
                 self.controls[event.key] = True
-            elif event.key == pygame.K_z:
+            elif event.key == pygame.K_c:
                 self.lasers.append(self.ship.fire_laser())
 
         elif event.type == pygame.KEYUP:
