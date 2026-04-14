@@ -76,7 +76,7 @@ class Game:
         self.screen.blit(self.background, self.screen.get_rect())
         self.ship.draw()
         for laser in self.lasers:
-            laser.move_up(dt)
+            laser.move(dt)
             if laser.is_off_screen():
                 self.lasers.remove(laser)
             else:
