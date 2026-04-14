@@ -41,7 +41,7 @@ class Ship(VisualAsset):
         self.rect.x = round(self.x)
         self.rect.y = round(self.y)
 
-        self.rotState = 0  #  0 = up, 1 = right, 2 = down, 3 = left
+        self.rotState = 0  #  0 = up, 1 = left, 2 = down, 3 = right
 
     def move_right(self, dt: float) -> None:
         """Move the ship right"""
@@ -63,15 +63,15 @@ class Ship(VisualAsset):
         self.y = pygame.math.clamp(self.y + (MOVESPEED * dt), self.yMin, self.yMax)
         self.rect.y = round(self.y)
 
-    def turn_right(self) -> None:
-        """Turn the ship right (clockwise)"""
-        self.img = pygame.transform.rotate(self.img, -90)
-        self.rect = self.img.get_rect(center=self.rect.center)
-        self.rotState = (self.rotState + 1) % 4
-        
     def turn_left(self) -> None:
         """Turn the ship left (counter-clockwise)"""
         self.img = pygame.transform.rotate(self.img, 90)
+        self.rect = self.img.get_rect(center=self.rect.center)
+        self.rotState = (self.rotState + 1) % 4
+
+    def turn_right(self) -> None:
+        """Turn the ship right (clockwise)"""
+        self.img = pygame.transform.rotate(self.img, -90)
         self.rect = self.img.get_rect(center=self.rect.center)
         self.rotState = (self.rotState - 1) % 4
 
