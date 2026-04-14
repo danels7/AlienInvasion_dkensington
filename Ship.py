@@ -41,6 +41,8 @@ class Ship(VisualAsset):
         self.rect.x = round(self.x)
         self.rect.y = round(self.y)
 
+        self.rotState = 0  #  0 = up, 1 = right, 2 = down, 3 = left
+
     def move_right(self, dt: float) -> None:
         """Move the ship right"""
         self.x = pygame.math.clamp(self.x + (MOVESPEED * dt), self.xMin, self.xMax)
@@ -60,6 +62,18 @@ class Ship(VisualAsset):
         """Move the ship down"""
         self.y = pygame.math.clamp(self.y + (MOVESPEED * dt), self.yMin, self.yMax)
         self.rect.y = round(self.y)
+
+    def turn_right(self) -> None:
+        """Turn the ship right (clockwise)"""
+        self.img = pygame.transform.rotate(self.img, -90)
+        self.rect = self.img.get_rect(center=self.rect.center)
+        self.rotState = (self.rotState + 1) % 4
+        
+    def turn_left(self) -> None:
+        """Turn the ship left (counter-clockwise)"""
+        self.img = pygame.transform.rotate(self.img, 90)
+        self.rect = self.img.get_rect(center=self.rect.center)
+        self.rotState = (self.rotState - 1) % 4
 
     def fire_laser(self) -> Laser:
         """Fire a laser. Returns the Laser instance that was created"""
