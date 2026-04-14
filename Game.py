@@ -51,6 +51,10 @@ class Game:
                 self.controls[event.key] = True
             elif event.key == pygame.K_c:
                 self.lasers.append(self.ship.fire_laser())
+            elif event.key == pygame.K_z:
+                self.ship.turn_left()
+            elif event.key == pygame.K_x:
+                self.ship.turn_right()
 
         elif event.type == pygame.KEYUP:
             if event.key in self.controls.keys():
