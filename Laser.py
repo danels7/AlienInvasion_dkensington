@@ -36,6 +36,9 @@ class Laser(VisualAsset):
         self.rect.y = round(self.y)
 
         self.yMin = -self.rect.height
+        self.yMax = self.parent.get_height()
+        self.xMin = -self.rect.width
+        self.xMax = self.parent.get_width()
         self.toppedOut = False
 
     def move_up(self, dt: float) -> None:
