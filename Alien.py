@@ -1,6 +1,7 @@
 import pygame
 from pygame import Surface
 from VisualAsset import VisualAsset
+from Laser import Laser
 import util
 
 
@@ -18,3 +19,9 @@ class Alien(VisualAsset):
 
         self.rect.x = round(self.x)
         self.rect.y = round(self.y)
+
+    def is_touching_laser(self, lasers: list[Laser]) -> int | None:
+        for index, laser in enumerate(lasers):
+            if laser.is_overlapping(self.rect):
+                return index
+        return None
