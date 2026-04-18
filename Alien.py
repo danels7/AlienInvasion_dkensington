@@ -11,8 +11,10 @@ with ALIENASSET.open() as img:
 
 
 class Alien(VisualAsset):
-    def __init__(self, screen: Surface, spawnX: float, spawnY: float):
+    def __init__(self, screen: Surface, movementSpeed: float, spawnX: float, spawnY: float):
         super().__init__(screen, ALIENIMG, (screen.get_height() / 12) / ALIENIMG.get_height())
+
+        self.speed = movementSpeed
 
         self.x = spawnX
         self.y = spawnY
