@@ -17,7 +17,7 @@ import util
 SHIPASSET = util.image_asset("ship2.png")
 with SHIPASSET.open() as img:
     _img = pygame.image.load(img)
-    _multi = (WINDOWHEIGHT/15) / _img.get_height()
+    _multi = (WINDOWHEIGHT/12) / _img.get_height()
     SHIPIMG = pygame.transform.scale(_img, (_img.get_width() * _multi, _img.get_height() * _multi))
     del _img, _multi
 
