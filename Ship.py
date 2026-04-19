@@ -11,12 +11,16 @@ import pygame
 from pygame import Surface
 from VisualAsset import VisualAsset
 from Laser import Laser
+from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
 import util
 
 
 SHIPASSET = util.image_asset("ship2.png")
 with SHIPASSET.open() as img:
-    SHIPIMG = pygame.image.load(img)
+    _img = pygame.image.load(img)
+    _multi = (WINDOWHEIGHT/15) / _img.get_height()
+    SHIPIMG = pygame.transform.scale(_img, (_img.get_width() * _multi, _img.get_height() * _multi))
+    del _img, _multi
 
 MOVESPEED = 512 # ship speed in px/sec
 
@@ -28,7 +32,7 @@ class Ship(VisualAsset):
         screenHeight = screen.get_height()
         screenWidth = screen.get_width()
 
-        super().__init__(screen, SHIPIMG, (screenHeight/15) / SHIPIMG.get_height())
+        super().__init__(screen, SHIPIMG)
 
         self.xMin = 0
         self.xMax = screenWidth - self.rect.width

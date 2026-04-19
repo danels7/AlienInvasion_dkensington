@@ -10,11 +10,14 @@ This class inherits from VisualAsset.
 import pygame
 from pygame import Surface, Rect
 from VisualAsset import VisualAsset
+from Ship import SHIPIMG
 import util
 
 
 LASERASSET = util.image_asset("laserBlast.png")
 with LASERASSET.open() as img:
+    _img = pygame.image.load(img)
+    _multi = SHIPIMG.get_height() / _img.get_height()
     LASERIMG = pygame.image.load(img)
 
 
@@ -26,10 +29,10 @@ class Laser(VisualAsset):
 
     def __init__(self, screen: Surface, shipRect: Rect, rotState: int):
         if rotState % 2 == 0: # 0 or 2 (up or down)
-            super().__init__(screen, LASERIMG, shipRect.height / LASERIMG.get_height())
+            super().__init__(screen, LASERIMG)
         else: # 1 or 3 (left or right)
             img = pygame.transform.rotate(LASERIMG, 90)
-            super().__init__(screen, img, shipRect.width / LASERIMG.get_height())
+            super().__init__(screen, img)
 
         self.rect = self.img.get_rect()
 

@@ -2,17 +2,20 @@ import pygame
 from pygame import Surface
 from VisualAsset import VisualAsset
 from Laser import Laser
+from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
 import util
 
 
 ALIENASSET = util.image_asset("enemy_4.png")
 with ALIENASSET.open() as img:
+    _img = pygame.image.load(img)
+    _multi = (WINDOWHEIGHT/12) / _img.get_height()
     ALIENIMG = pygame.image.load(img)
 
 
 class Alien(VisualAsset):
     def __init__(self, screen: Surface, fleetId: int, movementSpeed: float, spawnX: float, spawnY: float):
-        super().__init__(screen, ALIENIMG, (screen.get_height() / 12) / ALIENIMG.get_height())
+        super().__init__(screen, ALIENIMG)
 
         self.id = fleetId
 
