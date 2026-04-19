@@ -28,7 +28,7 @@ class Game:
         height = screen.get_height()
         self.screen = screen.subsurface(0, 0, width, height)
         self.ship = Ship(self.screen)
-        self.fleet = Fleet(self.screen, 10, 5, 30)
+        self.fleet = Fleet(self.screen, 15, 5, 30)
 
         self.background = BACKGROUNDIMG.copy()
 
