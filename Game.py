@@ -11,6 +11,7 @@ from pygame import Surface
 from pygame.event import Event
 from Ship import Ship
 from Laser import Laser
+from Fleet import Fleet
 import util
 
 
@@ -27,6 +28,7 @@ class Game:
         height = screen.get_height()
         self.screen = screen.subsurface(0, 0, width, height)
         self.ship = Ship(self.screen)
+        self.fleet = Fleet(self.screen, 10, 5, 30)
 
         self.background = BACKGROUNDIMG.copy()
 
@@ -81,3 +83,4 @@ class Game:
                 self.lasers.remove(laser)
             else:
                 laser.draw()
+        self.fleet.draw_fleet()
