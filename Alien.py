@@ -29,3 +29,6 @@ class Alien(VisualAsset):
             if laser.is_overlapping(self.rect):
                 return index
         return None
+    
+    def get_id(self):
+        return self.id
