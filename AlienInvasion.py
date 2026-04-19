@@ -6,11 +6,12 @@ This file defines the class AlienInvasion. This class serves as the "starting po
 """
 
 
-import pygame
-from Game import Game
 
 WINDOWWIDTH = 1280
 WINDOWHEIGHT = 720
+
+import pygame
+from Game import Game
 
 
 class AlienInvasion:
