@@ -1,13 +1,15 @@
 import pygame
 from pygame import Surface
 from Alien import Alien
+from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
+from Alien import ALIENIMG
 
 
 class Fleet():
     def __init__(self, screen: Surface, fleetWidth: int, fleetHeight: int, alienSpeed: float):
         offset = 20
-        spawnAreaWidth = screen.get_width() - (offset * 2)
-        spawnAreaHeight = screen.get_height() * 0.45
+        spawnAreaWidth = WINDOWWIDTH - (offset * 2)
+        spawnAreaHeight = WINDOWHEIGHT * 0.45
 
         dx = spawnAreaWidth / fleetWidth
         dy = spawnAreaHeight / fleetHeight
@@ -16,11 +18,13 @@ class Fleet():
 
         self.width = fleetWidth
 
+        extra = abs(ALIENIMG.get_width() - dx) / fleetWidth
+
         alienId = 0
         for y in range(fleetHeight):
             row: list[Alien] = []
             for x in range(fleetWidth):
-                row.append(Alien(screen, alienId, alienSpeed, (x*dx)+offset, (y*dy)+offset))
+                row.append(Alien(screen, alienId, alienSpeed, (x*dx)+offset+(extra*x), (y*dy)+offset))
                 alienId += 1
             self.aliens.append(row)
 
