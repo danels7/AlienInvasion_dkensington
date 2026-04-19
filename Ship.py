@@ -10,7 +10,6 @@ This class inherits from VisualAsset.
 import pygame
 from pygame import Surface
 from VisualAsset import VisualAsset
-from Laser import Laser
 from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
 import util
 
@@ -24,6 +23,7 @@ with SHIPASSET.open() as img:
 
 MOVESPEED = 512 # ship speed in px/sec
 
+from Laser import Laser
 
 class Ship(VisualAsset):
     """This class represents the ship that the player controls"""
