@@ -18,7 +18,7 @@ class Fleet():
 
         self.width = fleetWidth
 
-        alienId = 1
+        alienId = 0
         for y in range(fleetWidth):
             row: list[Alien] = []
             for x in range(fleetHeight):
