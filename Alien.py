@@ -10,7 +10,7 @@ ALIENASSET = util.image_asset("enemy_4.png")
 with ALIENASSET.open() as img:
     _img = pygame.image.load(img)
     _multi = (WINDOWHEIGHT/12) / _img.get_height()
-    ALIENIMG = pygame.image.load(img)
+    ALIENIMG = pygame.transform.scale(_img, (_img.get_width() * _multi, _img.get_height() * _multi))
 
 
 class Alien(VisualAsset):

@@ -18,7 +18,7 @@ LASERASSET = util.image_asset("laserBlast.png")
 with LASERASSET.open() as img:
     _img = pygame.image.load(img)
     _multi = SHIPIMG.get_height() / _img.get_height()
-    LASERIMG = pygame.image.load(img)
+    LASERIMG = pygame.transform.scale(_img, (_img.get_width() * _multi, _img.get_height() * _multi))
 
 
 MOVESPEED = 576
