@@ -1,4 +1,3 @@
-import pygame
 from pygame import Surface
 from Alien import Alien
 from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT

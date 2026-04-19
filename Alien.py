@@ -2,7 +2,7 @@ import pygame
 from pygame import Surface
 from VisualAsset import VisualAsset
 from Laser import Laser
-from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
+from AlienInvasion import WINDOWHEIGHT
 import util
 
 
