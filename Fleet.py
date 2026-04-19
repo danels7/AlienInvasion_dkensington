@@ -12,8 +12,6 @@ class Fleet():
         dx = spawnAreaWidth / fleetWidth
         dy = spawnAreaHeight / fleetHeight
 
-        alienHeightDivisor = (screen.get_height() / spawnAreaHeight) * fleetHeight
-
         self.aliens: list[list[Alien]] = []
 
         self.width = fleetWidth
@@ -22,7 +20,7 @@ class Fleet():
         for y in range(fleetHeight):
             row: list[Alien] = []
             for x in range(fleetWidth):
-                row.append(Alien(screen, alienId, alienSpeed, (x*dx)+offset, (y*dy)+offset, alienHeightDivisor))
+                row.append(Alien(screen, alienId, alienSpeed, (x*dx)+offset, (y*dy)+offset))
                 alienId += 1
             self.aliens.append(row)
 
