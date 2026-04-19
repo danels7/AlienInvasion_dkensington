@@ -29,18 +29,15 @@ class Ship(VisualAsset):
     """This class represents the ship that the player controls"""
 
     def __init__(self, screen: Surface):
-        screenHeight = screen.get_height()
-        screenWidth = screen.get_width()
-
         super().__init__(screen, SHIPIMG)
 
         self.xMin = 0
-        self.xMax = screenWidth - self.rect.width
+        self.xMax = WINDOWWIDTH - self.rect.width
         self.yMin = 0
-        self.yMax = screenHeight - self.rect.height
+        self.yMax = WINDOWHEIGHT - self.rect.height
 
-        self.x = (screenWidth / 2) - (self.rect.width / 2)
-        self.y = screenHeight - self.rect.height
+        self.x = (WINDOWWIDTH / 2) - (self.rect.width / 2)
+        self.y = WINDOWHEIGHT - self.rect.height
         
         self.rect.x = round(self.x)
         self.rect.y = round(self.y)
