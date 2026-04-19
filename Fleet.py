@@ -21,3 +21,8 @@ class Fleet():
             for x in range(fleetHeight):
                 row.append(Alien(screen, alienSpeed, (x*dx)+offset, (y*dy)+offset, alienHeightDivisor))
             self.Aliens.append(row)
+
+    def draw_fleet(self) -> None:
+        for row in self.Aliens:
+            for alien in row:
+                alien.draw()
