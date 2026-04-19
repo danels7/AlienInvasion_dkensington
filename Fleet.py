@@ -19,9 +19,9 @@ class Fleet():
         self.width = fleetWidth
 
         alienId = 0
-        for y in range(fleetWidth):
+        for y in range(fleetHeight):
             row: list[Alien] = []
-            for x in range(fleetHeight):
+            for x in range(fleetWidth):
                 row.append(Alien(screen, alienId, alienSpeed, (x*dx)+offset, (y*dy)+offset, alienHeightDivisor))
                 alienId += 1
             self.aliens.append(row)
