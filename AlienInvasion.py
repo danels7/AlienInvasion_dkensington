@@ -9,13 +9,16 @@ This file defines the class AlienInvasion. This class serves as the "starting po
 import pygame
 from Game import Game
 
+WINDOWWIDTH = 1280
+WINDOWHEIGHT = 720
+
 
 class AlienInvasion:
     """This class represents the core of the program. It creates the pygame instance and handles the core loop of the program"""
 
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((1280, 720))
+        self.screen = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
         pygame.display.set_caption("Alien Invasion")
         self.running = False
         self.clock = pygame.time.Clock()
