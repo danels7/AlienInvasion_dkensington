@@ -16,10 +16,12 @@ class Fleet():
 
         self.Aliens: list[list[Alien]] = []
 
+        alienId = 1
         for y in range(fleetWidth):
             row: list[Alien] = []
             for x in range(fleetHeight):
-                row.append(Alien(screen, alienSpeed, (x*dx)+offset, (y*dy)+offset, alienHeightDivisor))
+                row.append(Alien(screen, alienId, alienSpeed, (x*dx)+offset, (y*dy)+offset, alienHeightDivisor))
+                alienId += 1
             self.Aliens.append(row)
 
     def draw_fleet(self) -> None:
