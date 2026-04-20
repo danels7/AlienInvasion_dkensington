@@ -6,7 +6,7 @@ from Ship import Ship
 from Alien import ALIENIMG
 
 
-class Fleet():
+class Fleet:
     def __init__(self, screen: Surface, fleetWidth: int, fleetHeight: int, alienSpeed: float):
         offset = 20
         spawnAreaWidth = WINDOWWIDTH - (offset * 2)
