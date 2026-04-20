@@ -66,6 +66,16 @@ class Game:
             if event.key in self.controls.keys():
                 self.controls[event.key] = False
 
+    def draw(self):
+        self.screen.blit(self.background, self.screen.get_rect())
+        self.ship.draw()
+        for laser in self.lasers:
+            if laser.is_off_screen():
+                self.lasers.remove(laser)
+            else:
+                laser.draw()
+        self.fleet.draw_fleet()
+
     def update(self, dt: float) -> None:
         """Does what is necessary to update the state of assets, then redraws them"""
 
@@ -79,16 +89,11 @@ class Game:
         elif self.controls[pygame.K_UP] and not self.controls[pygame.K_DOWN]:
             self.ship.move_up(dt)
 
+        for laser in self.lasers:
+            laser.move(dt)
+
         lasersToRemove = sorted(self.fleet.process_lasers(self.lasers), reverse=True)
         for index in lasersToRemove:
             self.lasers.pop(index)
 
-        self.screen.blit(self.background, self.screen.get_rect())
-        self.ship.draw()
-        for laser in self.lasers:
-            laser.move(dt)
-            if laser.is_off_screen():
-                self.lasers.remove(laser)
-            else:
-                laser.draw()
-        self.fleet.draw_fleet()
+        self.draw()
