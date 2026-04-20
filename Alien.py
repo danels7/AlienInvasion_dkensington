@@ -2,6 +2,7 @@ import pygame
 from pygame import Surface
 from VisualAsset import VisualAsset
 from Laser import Laser
+from Ship import Ship
 from AlienInvasion import WINDOWHEIGHT
 import util
 
@@ -35,6 +36,9 @@ class Alien(VisualAsset):
             if laser.is_overlapping(self.rect):
                 return index
         return None
+    
+    def is_touching_ship(self, ship: Ship) -> bool:
+        return ship.is_overlapping(self.rect)
     
     def get_id(self) -> int:
         return self.id
