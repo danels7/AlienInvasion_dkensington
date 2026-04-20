@@ -46,12 +46,13 @@ class Fleet():
                 alien.reset()
 
     def process_lasers(self, lasers: list[Laser]) -> list[int]:
+        laserList = [laser for laser in lasers]
         laserIndexes: list[int] = []
         for row in self.aliens:
             for alien in row:
-                index = alien.is_touching_laser(lasers)
+                index = alien.is_touching_laser(laserList)
                 if index is not None:
                     laserIndexes.append(index)
-                    lasers.pop(index)
+                    laserList.pop(index)
                     self.remove_alien(alien.get_id())
         return laserIndexes
