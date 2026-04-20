@@ -23,4 +23,5 @@ class VisualAsset(ABC):
         self.parent.blit(self.img, self.rect)
     
     def is_overlapping(self, rect: Rect) -> bool:
+        """Returns true if the rect provided is overlapping this object's rect"""
         return self.rect.colliderect(rect)

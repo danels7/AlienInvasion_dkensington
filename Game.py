@@ -74,6 +74,7 @@ class Game:
                 self.controls[event.key] = False
 
     def draw(self):
+        """Draws everything onto the screen"""
         self.screen.blit(self.background, self.screen.get_rect())
         for laser in self.lasers:
             if laser.is_off_screen():
@@ -85,7 +86,7 @@ class Game:
         pygame.display.flip()
 
     def update(self, dt: float) -> None:
-        """Does what is necessary to update the state of assets, then redraws them"""
+        """Does what is necessary to update the state of assets, then calls self.draw"""
 
         if self.respawning:
             if self.lastDeathTime + 2 <= time.time():

@@ -81,4 +81,5 @@ class Ship(VisualAsset):
         return Laser(self.parent, self.rect, self.rotState)
     
     def get_center(self) -> tuple[int, int]:
+        """Returns the coordinates of the center of the ship"""
         return self.rect.center
