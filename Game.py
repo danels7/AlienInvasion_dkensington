@@ -19,6 +19,7 @@ BACKGROUNDASSET = util.image_asset("Starbasesnow.png")
 with BACKGROUNDASSET.open() as img:
     BACKGROUNDIMG = pygame.image.load(img)
 
+MAXLASERS = 5 # maximum lasers on screen
 
 class Game:
     """This class manages the game itself. It handles controls, events, assets, etc."""
@@ -52,7 +53,8 @@ class Game:
             if event.key in self.controls.keys():
                 self.controls[event.key] = True
             elif event.key == pygame.K_c:
-                self.lasers.append(self.ship.fire_laser())
+                if len(self.lasers) < MAXLASERS:
+                    self.lasers.append(self.ship.fire_laser())
             elif event.key == pygame.K_z:
                 self.ship.turn_left()
             elif event.key == pygame.K_x:
