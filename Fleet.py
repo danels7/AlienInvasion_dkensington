@@ -2,6 +2,7 @@ from pygame import Surface
 from Alien import Alien
 from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
 from Laser import Laser
+from Ship import Ship
 from Alien import ALIENIMG
 
 
@@ -56,3 +57,10 @@ class Fleet():
                     laserList.pop(index)
                     self.remove_alien(alien.get_id())
         return laserIndexes
+    
+    def check_ship_collision(self, ship: Ship) -> bool:
+        for row in self.aliens:
+            for alien in row:
+                if alien.is_touching_ship(ship):
+                    return True
+        return False
