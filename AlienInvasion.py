@@ -37,5 +37,3 @@ class AlienInvasion:
                     self.game.process_event(event)
 
             self.game.update(self.clock.tick() / 1000)
-            
-            pygame.display.flip()

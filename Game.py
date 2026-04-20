@@ -75,6 +75,7 @@ class Game:
             else:
                 laser.draw()
         self.fleet.draw_fleet()
+        pygame.display.flip()
 
     def update(self, dt: float) -> None:
         """Does what is necessary to update the state of assets, then redraws them"""
