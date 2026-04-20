@@ -79,6 +79,10 @@ class Game:
         elif self.controls[pygame.K_UP] and not self.controls[pygame.K_DOWN]:
             self.ship.move_up(dt)
 
+        lasersToRemove = sorted(self.fleet.process_lasers(self.lasers), reverse=True)
+        for index in lasersToRemove:
+            self.lasers.pop(index)
+
         self.screen.blit(self.background, self.screen.get_rect())
         self.ship.draw()
         for laser in self.lasers:
