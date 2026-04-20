@@ -97,3 +97,9 @@ class Game:
             self.lasers.pop(index)
 
         self.draw()
+
+        if self.fleet.check_ship_collision(self.ship):
+            pygame.time.wait(1000)
+            self.ship = Ship(self.screen)
+            self.draw()
+            pygame.time.wait(1000)
