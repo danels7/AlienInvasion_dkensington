@@ -113,5 +113,6 @@ class Game:
         self.draw()
 
         if self.fleet.check_ship_collision(self.ship):
+            # subtract life once implemented
             self.respawning = True
             self.lastDeathTime = time.time()
