@@ -116,3 +116,6 @@ class Game:
             # subtract life once implemented
             self.respawning = True
             self.lastDeathTime = time.time()
+        elif self.fleet.is_fleet_empty():
+            self.respawning = True
+            self.lastDeathTime = time.time()
