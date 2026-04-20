@@ -90,11 +90,15 @@ class Game:
         if self.respawning:
             if self.lastDeathTime + 2 <= time.time():
                 self.respawning = False
+                self.respawnReason = RR_NULL
                 self.draw()
             else:
                 if self.lastDeathTime + 1 <= time.time():
                     self.ship = Ship(self.screen)
-                    self.fleet.reset_fleet_pos()
+                    if self.respawnReason == RR_DIED:
+                        self.fleet.reset_fleet_pos()
+                    elif self.respawnReason == RR_CLEARED:
+                        self.fleet = Fleet(self.screen, 15, 5, 30) # remember to increase difficulty each level
                 self.draw()
                 return
         
