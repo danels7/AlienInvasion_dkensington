@@ -60,7 +60,7 @@ class Game:
             if event.key in self.controls.keys():
                 self.controls[event.key] = True
             elif event.key == pygame.K_c:
-                if len(self.lasers) < MAXLASERS:
+                if len(self.lasers) < MAXLASERS and not self.respawning:
                     self.lasers.append(self.ship.fire_laser())
             elif event.key == pygame.K_z:
                 self.ship.turn_left()
