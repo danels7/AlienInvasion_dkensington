@@ -86,6 +86,3 @@ class Laser(VisualAsset):
     def is_off_screen(self) -> bool:
         """Returns True if the laser has moved up off the screen, False otherwise"""
         return self.offScreen
-    
-    def is_overlapping(self, rect: Rect) -> bool:
-        return self.rect.colliderect(rect)

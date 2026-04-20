@@ -6,7 +6,7 @@ This file defines the abstract base class VisualAsset, used for classes that rep
 """
 
 
-from pygame import Surface
+from pygame import Surface, Rect
 from abc import ABC
 
 
@@ -21,3 +21,6 @@ class VisualAsset(ABC):
     def draw(self) -> None:
         """Draws the asset image on the parent screen"""
         self.parent.blit(self.img, self.rect)
+    
+    def is_overlapping(self, rect: Rect) -> bool:
+        return self.rect.colliderect(rect)
