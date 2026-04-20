@@ -1,6 +1,7 @@
 from pygame import Surface
 from Alien import Alien
 from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
+from Laser import Laser
 from Alien import ALIENIMG
 
 
@@ -43,3 +44,13 @@ class Fleet():
         for row in self.aliens:
             for alien in row:
                 alien.reset()
+
+    def process_lasers(self, lasers: list[Laser]) -> list[int]:
+        laserIndexes: list[int] = []
+        for row in self.aliens:
+            for alien in row:
+                index = alien.is_touching_laser(lasers)
+                if index is not None:
+                    laserIndexes.append(index)
+                    self.remove_alien(alien.get_id())
+        return laserIndexes
