@@ -21,6 +21,9 @@ class Alien(VisualAsset):
 
         self.speed = movementSpeed
 
+        self.spawnX = spawnX
+        self.spawnY = spawnY
+
         self.x = spawnX
         self.y = spawnY
 
@@ -35,3 +38,9 @@ class Alien(VisualAsset):
     
     def get_id(self):
         return self.id
+    
+    def reset(self):
+        self.x = self.spawnX
+        self.y = self.spawnY
+        self.rect.x = round(self.x)
+        self.rect.y = round(self.y)
