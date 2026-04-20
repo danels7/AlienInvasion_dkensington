@@ -70,3 +70,8 @@ class Fleet():
             if len(row) != 0:
                 return False
         return True
+    
+    def update_positions(self, ship: Ship, dt: float) -> None:
+        for row in self.aliens:
+            for alien in row:
+                alien.move_toward_ship(ship.get_center(), dt)
