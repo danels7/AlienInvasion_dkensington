@@ -36,10 +36,10 @@ class Alien(VisualAsset):
                 return index
         return None
     
-    def get_id(self):
+    def get_id(self) -> int:
         return self.id
     
-    def reset(self):
+    def reset(self) -> None:
         self.x = self.spawnX
         self.y = self.spawnY
         self.rect.x = round(self.x)
