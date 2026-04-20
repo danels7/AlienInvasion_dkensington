@@ -1,5 +1,6 @@
 import pygame
 from pygame import Surface
+from math import sin, cos, atan2
 from VisualAsset import VisualAsset
 from Laser import Laser
 from Ship import Ship
@@ -50,10 +51,19 @@ class Alien(VisualAsset):
         self.rect.y = round(self.y)
 
     def move_toward_ship(self, shipCenter: tuple[int, int], dt: float) -> None:
-        pos = pygame.Vector2(self.rect.center)
-        target = pygame.Vector2(shipCenter)
-        direction = (target - pos).normalize() * self.speed * dt
-        self.x += direction.x
-        self.y += direction.y
-        self.rect.x += round(self.x)
-        self.rect.y += round(self.y)
+        shipX = shipCenter[0]
+        shipY = shipCenter[1]
+
+        x = shipX - self.x
+        y = shipY - self.y
+
+        angle = atan2(y, x)
+
+        dx = cos(angle) * self.speed * dt
+        dy = sin(angle) * self.speed * dt
+
+        self.x += dx
+        self.y += dy
+
+        self.rect.x = round(self.x)
+        self.rect.y = round(self.y)
