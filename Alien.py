@@ -48,3 +48,12 @@ class Alien(VisualAsset):
         self.y = self.spawnY
         self.rect.x = round(self.x)
         self.rect.y = round(self.y)
+
+    def move_toward_ship(self, shipCenter: tuple[int, int], dt: float) -> None:
+        pos = pygame.Vector2(self.rect.center)
+        target = pygame.Vector2(shipCenter)
+        direction = (target - pos).normalize() * self.speed * dt
+        self.x += direction.x
+        self.y += direction.y
+        self.rect.x += round(self.x)
+        self.rect.y += round(self.y)
