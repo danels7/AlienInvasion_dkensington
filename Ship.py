@@ -79,3 +79,6 @@ class Ship(VisualAsset):
     def fire_laser(self) -> Laser:
         """Fire a laser. Returns the Laser instance that was created"""
         return Laser(self.parent, self.rect, self.rotState)
+    
+    def get_center(self) -> tuple[int, int]:
+        return self.rect.center
