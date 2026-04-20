@@ -64,3 +64,9 @@ class Fleet():
                 if alien.is_touching_ship(ship):
                     return True
         return False
+    
+    def is_fleet_empty(self) -> bool:
+        for row in self.aliens:
+            if len(row) != 0:
+                return False
+        return True
