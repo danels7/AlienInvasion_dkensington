@@ -22,6 +22,10 @@ with BACKGROUNDASSET.open() as img:
 
 MAXLASERS = 5 # maximum lasers on screen
 
+RR_NULL = 0
+RR_DIED = 1
+RR_CLEARED = 2
+
 class Game:
     """This class manages the game itself. It handles controls, events, assets, etc."""
 
@@ -39,6 +43,7 @@ class Game:
         self.lasers: list[Laser] = []
 
         self.respawning = False
+        self.respawnReason = RR_NULL
         self.lastDeathTime = 0
 
         self.controls = {
@@ -116,6 +121,8 @@ class Game:
             # subtract life once implemented
             self.respawning = True
             self.lastDeathTime = time.time()
+            self.respawnReason = RR_DIED
         elif self.fleet.is_fleet_empty():
             self.respawning = True
             self.lastDeathTime = time.time()
+            self.respawnReason = RR_CLEARED
