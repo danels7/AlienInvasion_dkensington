@@ -127,8 +127,10 @@ class Game:
             # subtract life once implemented
             self.respawning = True
             self.lastDeathTime = time.time()
+            self.lasers.clear()
             self.respawnReason = RR_DIED
         elif self.fleet.is_fleet_empty():
             self.respawning = True
             self.lastDeathTime = time.time()
+            self.lasers.clear()
             self.respawnReason = RR_CLEARED
