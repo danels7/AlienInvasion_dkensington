@@ -38,3 +38,8 @@ class Fleet():
             if alien.get_id() == id:
                 self.aliens[expectedRow].pop(index)
                 return
+            
+    def reset_fleet_pos(self):
+        for row in self.aliens:
+            for alien in row:
+                alien.reset()
