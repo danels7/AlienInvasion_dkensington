@@ -32,14 +32,14 @@ class Fleet():
             for alien in row:
                 alien.draw()
 
-    def remove_alien(self, id: int):
+    def remove_alien(self, id: int) -> None:
         expectedRow = id // self.width
         for index, alien in enumerate(self.aliens[expectedRow]):
             if alien.get_id() == id:
                 self.aliens[expectedRow].pop(index)
                 return
             
-    def reset_fleet_pos(self):
+    def reset_fleet_pos(self) -> None:
         for row in self.aliens:
             for alien in row:
                 alien.reset()
