@@ -52,5 +52,6 @@ class Fleet():
                 index = alien.is_touching_laser(lasers)
                 if index is not None:
                     laserIndexes.append(index)
+                    lasers.pop(index)
                     self.remove_alien(alien.get_id())
         return laserIndexes
