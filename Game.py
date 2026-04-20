@@ -112,6 +112,8 @@ class Game:
         elif self.controls[pygame.K_UP] and not self.controls[pygame.K_DOWN]:
             self.ship.move_up(dt)
 
+        self.fleet.update_positions(self.ship, dt)
+
         for laser in self.lasers:
             laser.move(dt)
 
