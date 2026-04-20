@@ -12,6 +12,7 @@ from pygame.event import Event
 from Ship import Ship
 from Laser import Laser
 from Fleet import Fleet
+import time
 import util
 
 
@@ -37,8 +38,9 @@ class Game:
 
         self.lasers: list[Laser] = []
 
-        # this is probably gonne be temporary
-        # True = key is being held
+        self.respawning = False
+        self.lastDeathTime = 0
+
         self.controls = {
             pygame.K_RIGHT: False,
             pygame.K_LEFT: False,
@@ -68,18 +70,29 @@ class Game:
 
     def draw(self):
         self.screen.blit(self.background, self.screen.get_rect())
-        self.ship.draw()
         for laser in self.lasers:
             if laser.is_off_screen():
                 self.lasers.remove(laser)
             else:
                 laser.draw()
+        self.ship.draw()
         self.fleet.draw_fleet()
         pygame.display.flip()
 
     def update(self, dt: float) -> None:
         """Does what is necessary to update the state of assets, then redraws them"""
 
+        if self.respawning:
+            if self.lastDeathTime + 2 <= time.time():
+                self.respawning = False
+                self.draw()
+            else:
+                if self.lastDeathTime + 1 <= time.time():
+                    self.ship = Ship(self.screen)
+                    self.fleet.reset_fleet_pos()
+                self.draw()
+                return
+        
         if self.controls[pygame.K_RIGHT] and not self.controls[pygame.K_LEFT]:
             self.ship.move_right(dt)
         elif self.controls[pygame.K_LEFT] and not self.controls[pygame.K_RIGHT]:
@@ -100,7 +113,5 @@ class Game:
         self.draw()
 
         if self.fleet.check_ship_collision(self.ship):
-            pygame.time.wait(1000)
-            self.ship = Ship(self.screen)
-            self.draw()
-            pygame.time.wait(1000)
+            self.respawning = True
+            self.lastDeathTime = time.time()
