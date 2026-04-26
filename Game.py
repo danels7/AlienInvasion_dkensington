@@ -40,8 +40,6 @@ class Game(Stage):
 
         self.background = BACKGROUNDIMG.copy()
 
-        self.screen.blit(self.background, self.screen.get_rect())
-
         self.gameOverCallback = gameOver
 
         self.lasers: list[Laser] = []
