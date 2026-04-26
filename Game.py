@@ -39,6 +39,7 @@ class Game(Stage):
         self.screen = screen.subsurface(0, 0, WINDOWWIDTH, WINDOWHEIGHT)
         self.ship = Ship(self.screen)
         self.fleet = Fleet(self.screen, 15, 5, 30)
+        self.fleetSpawned = False
 
         self.background = BACKGROUNDIMG.copy()
 
@@ -64,6 +65,7 @@ class Game(Stage):
         self.stats = PlayerStats()
         self.respawning = True
         self.respawnReason = RR_STARTING
+        self.fleetSpawned = False
         self.lastDeathTime = time.time() - 1
 
     @override
@@ -112,7 +114,9 @@ class Game(Stage):
                     if self.respawnReason == RR_DIED:
                         self.fleet.reset_fleet_pos()
                     elif self.respawnReason == RR_CLEARED:
-                        self.fleet = Fleet(self.screen, 15, 5, 30) # remember to increase difficulty each level
+                        if not self.fleetSpawned:
+                            self.fleet = Fleet(self.screen, 15, 5, 30) # remember to increase difficulty each level
+                            self.fleetSpawned = True
                 self.draw()
                 return
         
@@ -148,3 +152,4 @@ class Game(Stage):
             self.lastDeathTime = time.time()
             self.lasers.clear()
             self.respawnReason = RR_CLEARED
+            self.fleetSpawned = False
