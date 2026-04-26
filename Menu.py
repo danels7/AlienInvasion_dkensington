@@ -23,8 +23,6 @@ PLAYBUTTONRECT.y = round((WINDOWHEIGHT/2) - (PLAYBUTTONRECT.height/2))
 
 class Menu(Stage):
     def __init__(self, screen: Surface):
-        width = screen.get_width()
-        height = screen.get_height()
-        self.screen = screen.subsurface(0, 0, width, height)
+        self.screen = screen.subsurface(0, 0, WINDOWWIDTH, WINDOWHEIGHT)
         self.background = BACKGROUNDIMG.copy()
         self.playButton = PLAYBUTTON.copy()
