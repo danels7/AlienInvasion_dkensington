@@ -71,3 +71,6 @@ class PlayerStats:
 
     def get_level(self) -> int:
         return self.level
+    
+    def get_score(self) -> int:
+        return self.score
