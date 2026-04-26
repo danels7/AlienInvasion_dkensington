@@ -1,3 +1,4 @@
+from pygame import Surface
 import json
 import time
 from util import file_asset
@@ -40,7 +41,8 @@ def add_score(score: int) -> None:
         
 
 class PlayerStats:
-    def __init__(self):
+    def __init__(self, screen: Surface):
+        self.screen = screen
         self.lives = 3
         self.score = 0
         self.level = 0
