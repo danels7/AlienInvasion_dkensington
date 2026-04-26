@@ -36,3 +36,7 @@ class Menu(Stage):
             if event.button == 1: # left mouse button
                 if PLAYBUTTONRECT.collidepoint(event.pos):
                     self.startCallback()
+
+    @override
+    def update(self, dt: float) -> None:
+        self.screen.blit(self.playButton, PLAYBUTTONRECT)
