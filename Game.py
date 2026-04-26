@@ -98,7 +98,6 @@ class Game(Stage):
                 laser.draw()
         self.ship.draw()
         self.fleet.draw_fleet()
-        pygame.display.flip()
 
     @override
     def update(self, dt: float) -> None:

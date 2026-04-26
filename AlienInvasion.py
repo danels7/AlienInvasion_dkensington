@@ -54,3 +54,5 @@ class AlienInvasion:
                     self.currentStage.process_event(event)
 
             self.currentStage.update(self.clock.tick() / 1000)
+
+            pygame.display.flip()
