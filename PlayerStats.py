@@ -1,5 +1,7 @@
 import pygame
 from pygame import Surface
+from Ship import SHIPIMG
+from AlienInvasion import WINDOWWIDTH
 import json
 import time
 import util
@@ -48,11 +50,41 @@ def add_score(score: int) -> None:
 
 class PlayerStats:
     def __init__(self, screen: Surface):
-        self.screen = screen
         self.lives = 3
         self.score = 0
         self.level = 0
         self.highScore = get_high_score()
+
+        self.screen = screen
+
+        self.extraLivesText = pygame.Surface((0, 0))
+        self.extraLivesTextRect = self.extraLivesText.get_rect()
+
+        self.scoreText = FONT.render("Score: 0", False, pygame.Color(0xff, 0xff, 0xff))
+        self.livesText = FONT.render("Lives:", False, pygame.Color(0xff, 0xff, 0xff))
+        self.ship1 = SHIPIMG.copy()
+        self.ship2 = SHIPIMG.copy()
+        self.highScoreText = FONT.render(f"High Score: {self.highScore}", False, pygame.Color(0xff, 0xff, 0xff))
+
+        self.scoreTextRect = self.scoreText.get_rect()
+        self.scoreTextRect.x = round((WINDOWWIDTH/2) - (self.scoreTextRect.width/2))
+        self.scoreTextRect.y = 0
+
+        self.livesTextRect = self.livesText.get_rect()
+        self.livesTextRect.x = 0
+        self.livesTextRect.y = 0
+
+        self.ship1rect = self.ship1.get_rect()
+        self.ship1rect.x = self.livesTextRect.width
+        self.ship1rect.y = 0
+        
+        self.ship2rect = self.ship2.get_rect()
+        self.ship2rect.x = self.livesTextRect.width + self.ship1rect.width
+        self.ship2rect.y = 0
+
+        self.highScoreTextRect = self.highScoreText.get_rect()
+        self.highScoreTextRect.x = WINDOWWIDTH - self.highScoreTextRect.width
+        self.highScoreTextRect.y = 0
 
     def save_score(self) -> None:
         add_score(self.score)
