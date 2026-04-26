@@ -69,12 +69,14 @@ class Ship(VisualAsset):
         self.img = pygame.transform.rotate(self.img, 90)
         self.rect = self.img.get_rect(center=self.rect.center)
         self.rotState = (self.rotState + 1) % 4
+        self.xMax = WINDOWWIDTH - self.rect.width
 
     def turn_right(self) -> None:
         """Turn the ship right (clockwise)"""
         self.img = pygame.transform.rotate(self.img, -90)
         self.rect = self.img.get_rect(center=self.rect.center)
         self.rotState = (self.rotState - 1) % 4
+        self.xMax = WINDOWWIDTH - self.rect.width
 
     def fire_laser(self) -> Laser:
         """Fire a laser. Returns the Laser instance that was created"""
