@@ -28,12 +28,15 @@ class AlienInvasion:
         self.game = Game(self.screen, self.switchToMenu)
         self.menu = Menu(self.screen, self.switchToGame)
         self.currentStage: Stage = self.menu
+        self.inGame = False
 
     def switchToGame(self):
         self.currentStage = self.game
+        self.inGame = True
         self.game.new_game()
 
     def switchToMenu(self):
+        self.inGame = False
         self.currentStage = self.menu
 
     def run(self):
