@@ -12,6 +12,7 @@ from pygame.event import Event
 from Ship import Ship
 from Laser import Laser
 from Fleet import Fleet
+from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
 import time
 import util
 
@@ -30,9 +31,7 @@ class Game:
     """This class manages the game itself. It handles controls, events, assets, etc."""
 
     def __init__(self, screen: Surface):
-        width = screen.get_width()
-        height = screen.get_height()
-        self.screen = screen.subsurface(0, 0, width, height)
+        self.screen = screen.subsurface(0, 0, WINDOWWIDTH, WINDOWHEIGHT)
         self.ship = Ship(self.screen)
         self.fleet = Fleet(self.screen, 15, 5, 30)
 
