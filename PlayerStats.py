@@ -53,3 +53,6 @@ class PlayerStats:
 
     def remove_life(self):
         self.lives -= 1
+
+    def get_lives(self):
+        return self.lives
