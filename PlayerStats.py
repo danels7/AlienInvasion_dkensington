@@ -21,7 +21,7 @@ del file
 def get_high_score() -> int:
     with SCORES.open() as file:
         scores: dict[str, int] = json.load(file)
-    return max(scores.values())
+    return max(scores.values(), default=0)
     
 def add_score(score: int) -> None:
     with SCORES.open() as file:
