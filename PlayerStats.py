@@ -57,14 +57,12 @@ class PlayerStats:
 
         self.screen = screen
 
-        self.extraLivesText = pygame.Surface((0, 0))
-        self.extraLivesTextRect = self.extraLivesText.get_rect()
-
         self.scoreText = FONT.render("Score: 0", False, pygame.Color(0xff, 0xff, 0xff))
         self.livesText = FONT.render("Lives:", False, pygame.Color(0xff, 0xff, 0xff))
         self.ship1 = SHIPIMG.copy()
         self.ship2 = SHIPIMG.copy()
         self.highScoreText = FONT.render(f"High Score: {self.highScore}", False, pygame.Color(0xff, 0xff, 0xff))
+        self.extraLivesText = FONT.render(f"+0", False, pygame.Color(0xff, 0xff, 0xff))
 
         self.scoreTextRect = self.scoreText.get_rect()
         self.scoreTextRect.x = round((WINDOWWIDTH/2) - (self.scoreTextRect.width/2))
@@ -86,6 +84,10 @@ class PlayerStats:
         self.highScoreTextRect.x = WINDOWWIDTH - self.highScoreTextRect.width
         self.highScoreTextRect.y = 0
 
+        self.extraLivesTextRect = self.extraLivesText.get_rect()
+        self.extraLivesTextRect.x = self.livesTextRect.width + self.ship1rect.width + self.ship2rect.width
+        self.extraLivesTextRect.y = 0
+
     def save_score(self) -> None:
         add_score(self.score)
 
@@ -98,9 +100,17 @@ class PlayerStats:
 
     def remove_life(self) -> None:
         self.lives -= 1
+        self.extraLivesText = FONT.render(f"+{self.lives-3}", False, pygame.Color(0xff, 0xff, 0xff))
+        self.extraLivesTextRect = self.extraLivesText.get_rect()
+        self.extraLivesTextRect.x = self.livesTextRect.width + self.ship1rect.width + self.ship2rect.width
+        self.extraLivesTextRect.y = 0
 
     def add_life(self) -> None:
         self.lives += 1
+        self.extraLivesText = FONT.render(f"+{self.lives-3}", False, pygame.Color(0xff, 0xff, 0xff))
+        self.extraLivesTextRect = self.extraLivesText.get_rect()
+        self.extraLivesTextRect.x = self.livesTextRect.width + self.ship1rect.width + self.ship2rect.width
+        self.extraLivesTextRect.y = 0
 
     def get_lives(self) -> int:
         return self.lives
