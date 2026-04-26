@@ -11,7 +11,9 @@ WINDOWWIDTH = 1280
 WINDOWHEIGHT = 720
 
 import pygame
+from Stage import Stage
 from Game import Game
+from Menu import Menu
 
 
 class AlienInvasion:
@@ -24,6 +26,8 @@ class AlienInvasion:
         self.running = False
         self.clock = pygame.time.Clock()
         self.game = Game(self.screen)
+        self.menu = Menu(self.screen)
+        self.currentStage: Stage = self.menu
 
     def run(self):
         """Runs the game"""
@@ -36,6 +40,6 @@ class AlienInvasion:
                     pygame.quit()
                     return
                 else:
-                    self.game.process_event(event)
+                    self.currentStage.process_event(event)
 
-            self.game.update(self.clock.tick() / 1000)
+            self.currentStage.update(self.clock.tick() / 1000)
