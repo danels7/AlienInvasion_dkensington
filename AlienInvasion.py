@@ -6,7 +6,6 @@ This file defines the class AlienInvasion. This class serves as the "starting po
 """
 
 
-
 WINDOWWIDTH = 1280
 WINDOWHEIGHT = 720
 
@@ -31,15 +30,18 @@ class AlienInvasion:
         self.inGame = False
 
     def switchToGame(self) -> None:
+        """Switches to the game and starts it"""
         self.currentStage = self.game
         self.inGame = True
         self.game.new_game()
 
     def switchToMenu(self) -> None:
+        """Switches to the menu"""
         self.inGame = False
         self.currentStage = self.menu
 
     def quit(self) -> None:
+        """Quits pygame"""
         self.running = False
         if self.inGame:
             self.game.game_over()

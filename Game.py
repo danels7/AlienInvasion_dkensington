@@ -64,19 +64,21 @@ class Game(Stage):
         }
 
     def new_game(self) -> None:
-        # using my respawn system to cheat a little here :)
+        """Sets the game to its starting state and starts a new game"""
         self.stats = PlayerStats(self.screen)
         self.respawning = True
         self.respawnReason = RR_STARTING
         self.fleetSpawned = False
         self.next1up = 250000
-        self.lastDeathTime = time.time() - 1
+        self.lastDeathTime = time.time() - 1 # using my respawn system to cheat a little here :)
 
     def game_over(self) -> None:
+        """For when the game is over. Saves the player's score and returns to the menu"""
         self.stats.save_score()
         self.gameOverCallback()
 
     def add_score(self, amount: int) -> None:
+        """Calls self.stats.get_score(amount) and checks if the new score is enough for a 1up"""
         self.stats.add_score(amount)
         if self.stats.get_score() >= self.next1up:
             self.next1up += 250000
@@ -85,7 +87,6 @@ class Game(Stage):
     @override
     def process_event(self, event: Event) -> None:
         """Takes an event and determines what, if anything, to do with it"""
-
         if event.type == pygame.KEYDOWN:
             if event.key in self.controls.keys():
                 self.controls[event.key] = True
@@ -116,7 +117,6 @@ class Game(Stage):
     @override
     def update(self, dt: float) -> None:
         """Does what is necessary to update the state of assets, then calls self.draw"""
-
         if self.respawning:
             if self.lastDeathTime + 2 <= time.time():
                 self.respawning = False

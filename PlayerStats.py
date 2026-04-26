@@ -1,3 +1,11 @@
+"""
+Alien Invasion - Player Stats Class
+Daniel Kensington
+This file defines the class PlayerStats. It is responsible for tracking and displaying the player's stats, and saving/loading past scores
+4/26/2026
+"""
+
+
 import pygame
 from pygame import Surface
 from Ship import SHIPIMG
@@ -28,11 +36,13 @@ del file
 # }
 
 def get_high_score() -> int:
+    """Loads and returns the highest saved score"""
     with SCORES.open() as file:
         scores: dict[str, int] = json.load(file)
     return max(scores.values(), default=0)
     
 def add_score(score: int) -> None:
+    """Saves the score provided and the time when it was saved"""
     with SCORES.open() as file:
         scores: dict[str, int] = json.load(file)
     timeStr = str(int(time.time()))
@@ -49,6 +59,8 @@ def add_score(score: int) -> None:
         
 
 class PlayerStats:
+    """This class tracks and displays the player's stats. It also save/loads past scores"""
+
     def __init__(self, screen: Surface):
         self.lives = 3
         self.score = 0
@@ -94,10 +106,12 @@ class PlayerStats:
         self.extraLivesTextRect.y = 0
 
     def save_score(self) -> None:
+        """Save the player's score"""
         if self.score != 0:
             add_score(self.score)
 
     def add_score(self, amount: int) -> None:
+        """Adds to the player's score"""
         self.score += amount
         self.scoreText = FONT.render(f"Score: {self.score}", False, pygame.Color(0xff, 0xff, 0xff))
         self.scoreTextRect = self.scoreText.get_rect()
@@ -105,6 +119,7 @@ class PlayerStats:
         self.scoreTextRect.y = 0
 
     def remove_life(self) -> None:
+        """Removes a life"""
         self.lives -= 1
         self.extraLivesText = FONT.render(f"+{self.lives-3}", False, pygame.Color(0xff, 0xff, 0xff))
         self.extraLivesTextRect = self.extraLivesText.get_rect()
@@ -112,6 +127,7 @@ class PlayerStats:
         self.extraLivesTextRect.y = 0
 
     def add_life(self) -> None:
+        """Adds a life"""
         self.lives += 1
         self.extraLivesText = FONT.render(f"+{self.lives-3}", False, pygame.Color(0xff, 0xff, 0xff))
         self.extraLivesTextRect = self.extraLivesText.get_rect()
@@ -119,9 +135,11 @@ class PlayerStats:
         self.extraLivesTextRect.y = 0
 
     def get_lives(self) -> int:
+        """Returns how many lives the player has"""
         return self.lives
     
     def level_up(self) -> None:
+        """Increases the level"""
         self.level += 1
         self.levelText = FONT.render(f"Level: {self.level}", False, pygame.Color(0xff, 0xff, 0xff))
         self.levelTextRect = self.levelText.get_rect()
@@ -129,12 +147,16 @@ class PlayerStats:
         self.levelTextRect.y = self.scoreTextRect.height
 
     def get_level(self) -> int:
+        """Returns what level the player is on"""
         return self.level
     
     def get_score(self) -> int:
+        """Returns the player's score"""
         return self.score
     
     def draw_stats(self) -> None:
+        """Displays the player's stats"""
+
         self.screen.blit(self.scoreText, self.scoreTextRect)
         self.screen.blit(self.highScoreText, self.highScoreTextRect)
         self.screen.blit(self.levelText, self.levelTextRect)

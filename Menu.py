@@ -1,3 +1,11 @@
+"""
+Alien Invasion - Menu Class
+Daniel Kensington
+This file defines the class Menu. It represents the menu that is displayed before the main game
+4/26/2026
+"""
+
+
 import pygame
 from pygame import Surface
 from pygame.event import Event
@@ -24,6 +32,8 @@ PLAYBUTTONRECT.y = round((WINDOWHEIGHT/2) - (PLAYBUTTONRECT.height/2))
 
 
 class Menu(Stage):
+    """This class represents the menu that is displayed before the main game"""
+
     def __init__(self, screen: Surface, startGame: Callable[[], None]):
         self.screen = screen.subsurface(0, 0, WINDOWWIDTH, WINDOWHEIGHT)
         self.background = BACKGROUNDIMG.copy()
@@ -32,6 +42,7 @@ class Menu(Stage):
 
     @override
     def process_event(self, event: Event) -> None:
+        """Processes events. Only checks if the play button has been clicked"""
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1: # left mouse button
                 if PLAYBUTTONRECT.collidepoint(event.pos):
@@ -39,5 +50,6 @@ class Menu(Stage):
 
     @override
     def update(self, dt: float) -> None:
+        """Draws the necessary elements"""
         self.screen.blit(self.background, self.screen.get_rect())
         self.screen.blit(self.playButton, PLAYBUTTONRECT)
