@@ -1,7 +1,13 @@
+import pygame
 from pygame import Surface
 import json
 import time
 import util
+
+
+pygame.font.init()
+FONTASSET = util.font_asset("Silkscreen-Regular.ttf")
+FONT = pygame.font.Font(FONTASSET, 30)
 
 
 SCORES = util.file_asset("scores.json")
