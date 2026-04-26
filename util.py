@@ -13,7 +13,7 @@ CWD = Path.cwd()
 ASSETS = Path.joinpath(CWD, "Assets")
 
 FILE = Path.joinpath(ASSETS, "file")
-FONTS = Path.joinpath(ASSETS, "Fonts")
+FONTS = Path.joinpath(ASSETS, "Fonts", "Silkscreen")
 IMAGES = Path.joinpath(ASSETS, "images")
 SOUND = Path.joinpath(ASSETS, "sound")
 
