@@ -29,6 +29,7 @@ MAXLASERS = 5 # maximum lasers on screen
 RR_NULL = 0
 RR_DIED = 1
 RR_CLEARED = 2
+RR_STARTING = 3
 
 class Game(Stage):
     """This class manages the game itself. It handles controls, events, assets, etc."""
@@ -54,6 +55,12 @@ class Game(Stage):
             pygame.K_UP: False,
             pygame.K_DOWN: False
         }
+
+    def new_game(self) -> None:
+        # using my respawn system to cheat a little here :)
+        self.respawning = True
+        self.respawnReason = RR_STARTING
+        self.lastDeathTime = time.time() - 1
 
     @override
     def process_event(self, event: Event) -> None:

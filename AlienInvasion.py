@@ -31,6 +31,7 @@ class AlienInvasion:
 
     def switchToGame(self):
         self.currentStage = self.game
+        self.game.new_game()
 
     def switchToMenu(self):
         self.currentStage = self.menu
