@@ -111,6 +111,7 @@ class Game(Stage):
                 laser.draw()
         self.ship.draw()
         self.fleet.draw_fleet()
+        self.stats.draw_stats()
 
     @override
     def update(self, dt: float) -> None:
