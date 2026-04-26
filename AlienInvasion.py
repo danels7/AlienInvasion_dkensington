@@ -41,6 +41,8 @@ class AlienInvasion:
 
     def quit(self):
         self.running = False
+        if self.inGame:
+            self.game.game_over()
         pygame.quit()
 
     def run(self):
