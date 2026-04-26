@@ -26,6 +26,11 @@ BACKGROUNDASSET = util.image_asset("Starbasesnow.png")
 with BACKGROUNDASSET.open() as img:
     BACKGROUNDIMG = pygame.image.load(img)
 
+pygame.mixer.init()
+DESTROYSOUNDASSET = util.sound_asset("impactSound.mp3")
+DESTROYSOUND = pygame.mixer.Sound(DESTROYSOUNDASSET)
+
+
 MAXLASERS = 5 # maximum lasers on screen
 
 RR_NULL = 0
@@ -156,6 +161,7 @@ class Game(Stage):
         for index in lasersToRemove:
             self.lasers.pop(index)
             self.add_score(100)
+            DESTROYSOUND.play()
 
         self.draw()
 
