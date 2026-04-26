@@ -48,7 +48,7 @@ class Game(Stage):
 
         self.lasers: list[Laser] = []
 
-        self.stats = PlayerStats()
+        self.stats = PlayerStats(self.screen)
 
         self.respawning = False
         self.respawnReason = RR_NULL
@@ -63,7 +63,7 @@ class Game(Stage):
 
     def new_game(self) -> None:
         # using my respawn system to cheat a little here :)
-        self.stats = PlayerStats()
+        self.stats = PlayerStats(self.screen)
         self.respawning = True
         self.respawnReason = RR_STARTING
         self.fleetSpawned = False
