@@ -69,6 +69,10 @@ class Game(Stage):
         self.fleetSpawned = False
         self.lastDeathTime = time.time() - 1
 
+    def game_over(self) -> None:
+        self.stats.save_score()
+        self.gameOverCallback()
+
     @override
     def process_event(self, event: Event) -> None:
         """Takes an event and determines what, if anything, to do with it"""
