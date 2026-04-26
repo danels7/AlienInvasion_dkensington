@@ -12,7 +12,9 @@ from pygame.event import Event
 from Ship import Ship
 from Laser import Laser
 from Fleet import Fleet
+from Stage import Stage
 from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
+from typing import override
 import time
 import util
 
@@ -27,7 +29,7 @@ RR_NULL = 0
 RR_DIED = 1
 RR_CLEARED = 2
 
-class Game:
+class Game(Stage):
     """This class manages the game itself. It handles controls, events, assets, etc."""
 
     def __init__(self, screen: Surface):
@@ -52,6 +54,7 @@ class Game:
             pygame.K_DOWN: False
         }
 
+    @override
     def process_event(self, event: Event) -> None:
         """Takes an event and determines what, if anything, to do with it"""
 

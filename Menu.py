@@ -1,6 +1,8 @@
 import pygame
 from pygame import Surface
+from Stage import Stage
 from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
+from typing import override
 import util
 
 
@@ -19,7 +21,7 @@ PLAYBUTTONRECT.x = round((WINDOWWIDTH/2) - (PLAYBUTTONRECT.width/2))
 PLAYBUTTONRECT.y = round((WINDOWHEIGHT/2) - (PLAYBUTTONRECT.height/2))
 
 
-class Menu:
+class Menu(Stage):
     def __init__(self, screen: Surface):
         width = screen.get_width()
         height = screen.get_height()
