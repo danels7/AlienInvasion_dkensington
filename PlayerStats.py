@@ -47,3 +47,6 @@ class PlayerStats:
 
     def save_score(self):
         add_score(self.score)
+
+    def add_score(self, amount: int):
+        self.score += amount
