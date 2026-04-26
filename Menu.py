@@ -1,5 +1,6 @@
 import pygame
 from pygame import Surface
+from pygame.event import Event
 from Stage import Stage
 from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
 from typing import override
@@ -28,3 +29,10 @@ class Menu(Stage):
         self.background = BACKGROUNDIMG.copy()
         self.playButton = PLAYBUTTON.copy()
         self.startCallback = startGame
+
+    @override
+    def process_event(self, event: Event) -> None:
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1: # left mouse button
+                if PLAYBUTTONRECT.collidepoint(event.pos):
+                    self.startCallback()
