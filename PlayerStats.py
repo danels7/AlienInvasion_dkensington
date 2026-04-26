@@ -63,6 +63,9 @@ class PlayerStats:
     def remove_life(self) -> None:
         self.lives -= 1
 
+    def add_life(self) -> None:
+        self.lives += 1
+
     def get_lives(self) -> int:
         return self.lives
     
