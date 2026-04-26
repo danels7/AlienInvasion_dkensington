@@ -39,4 +39,5 @@ class Menu(Stage):
 
     @override
     def update(self, dt: float) -> None:
+        self.screen.blit(self.background, self.screen.get_rect())
         self.screen.blit(self.playButton, PLAYBUTTONRECT)
