@@ -12,6 +12,7 @@ from pygame.event import Event
 from Ship import Ship
 from Laser import Laser
 from Fleet import Fleet
+from PlayerStats import PlayerStats
 from Stage import Stage
 from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
 from typing import override
@@ -45,6 +46,8 @@ class Game(Stage):
 
         self.lasers: list[Laser] = []
 
+        self.stats = PlayerStats()
+
         self.respawning = False
         self.respawnReason = RR_NULL
         self.lastDeathTime = 0
@@ -58,6 +61,7 @@ class Game(Stage):
 
     def new_game(self) -> None:
         # using my respawn system to cheat a little here :)
+        self.stats = PlayerStats()
         self.respawning = True
         self.respawnReason = RR_STARTING
         self.lastDeathTime = time.time() - 1
