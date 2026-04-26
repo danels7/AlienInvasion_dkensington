@@ -39,9 +39,11 @@ def add_score(score: int):
         json.dump(scores, file)
         
 
-
 class PlayerStats:
     def __init__(self):
         self.lives = 3
         self.score = 0
         self.highScore = get_high_score()
+
+    def save_score(self):
+        add_score(self.score)
