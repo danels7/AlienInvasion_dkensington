@@ -45,14 +45,14 @@ class PlayerStats:
         self.score = 0
         self.highScore = get_high_score()
 
-    def save_score(self):
+    def save_score(self) -> None:
         add_score(self.score)
 
-    def add_score(self, amount: int):
+    def add_score(self, amount: int) -> None:
         self.score += amount
 
-    def remove_life(self):
+    def remove_life(self) -> None:
         self.lives -= 1
 
-    def get_lives(self):
+    def get_lives(self) -> int:
         return self.lives
