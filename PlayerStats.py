@@ -109,3 +109,16 @@ class PlayerStats:
     
     def get_score(self) -> int:
         return self.score
+    
+    def draw_stats(self) -> None:
+        self.screen.blit(self.scoreText, self.scoreTextRect)
+        self.screen.blit(self.highScoreText, self.highScoreTextRect)
+
+        self.screen.blit(self.livesText, self.livesTextRect)
+        displayLives = self.lives - 1
+        if displayLives >= 1:
+            self.screen.blit(self.ship1, self.ship1rect)
+        if displayLives >= 2:
+            self.screen.blit(self.ship2, self.ship2rect)
+        if displayLives >= 3:
+            self.screen.blit(self.extraLivesText, self.extraLivesTextRect)
