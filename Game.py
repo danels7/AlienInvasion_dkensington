@@ -140,6 +140,7 @@ class Game(Stage):
         lasersToRemove = sorted(self.fleet.process_lasers(self.lasers), reverse=True)
         for index in lasersToRemove:
             self.lasers.pop(index)
+            self.stats.add_score(100)
 
         self.draw()
 
