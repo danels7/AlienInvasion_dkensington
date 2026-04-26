@@ -113,7 +113,7 @@ class Game(Stage):
                     self.ship = Ship(self.screen)
                     if self.respawnReason == RR_DIED:
                         self.fleet.reset_fleet_pos()
-                    elif self.respawnReason == RR_CLEARED:
+                    elif self.respawnReason == RR_CLEARED or self.respawnReason == RR_STARTING:
                         if not self.fleetSpawned:
                             self.fleet = Fleet(self.screen, 15, 5, 30) # remember to increase difficulty each level
                             self.fleetSpawned = True
