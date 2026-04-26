@@ -16,3 +16,11 @@ class Stage(ABC):
     def process_event(self, event: Event) -> None:
         """Takes an event and determines what, if anything, to do with it"""
         ...
+
+    # optional
+    def update(self, dt: float) -> None:
+        """
+        Optional implementation: Used to update the state of the Stage (deltatimed)
+        If this function is not implemented, calling it is safe and will do nothing
+        """
+        ...

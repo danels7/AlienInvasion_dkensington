@@ -87,6 +87,7 @@ class Game(Stage):
         self.fleet.draw_fleet()
         pygame.display.flip()
 
+    @override
     def update(self, dt: float) -> None:
         """Does what is necessary to update the state of assets, then calls self.draw"""
 
