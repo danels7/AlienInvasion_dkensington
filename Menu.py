@@ -3,6 +3,7 @@ from pygame import Surface
 from Stage import Stage
 from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
 from typing import override
+from collections.abc import Callable
 import util
 
 
@@ -22,7 +23,8 @@ PLAYBUTTONRECT.y = round((WINDOWHEIGHT/2) - (PLAYBUTTONRECT.height/2))
 
 
 class Menu(Stage):
-    def __init__(self, screen: Surface):
+    def __init__(self, screen: Surface, startGame: Callable[[], None]):
         self.screen = screen.subsurface(0, 0, WINDOWWIDTH, WINDOWHEIGHT)
         self.background = BACKGROUNDIMG.copy()
         self.playButton = PLAYBUTTON.copy()
+        self.startCallback = startGame
