@@ -1,10 +1,10 @@
 from pygame import Surface
 import json
 import time
-from util import file_asset
+import util
 
 
-SCORES = file_asset("scores.json")
+SCORES = util.file_asset("scores.json")
 
 file = SCORES.open()
 if not file.read().strip():
