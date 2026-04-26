@@ -21,7 +21,13 @@ with SHIPASSET.open() as img:
     SHIPIMG = pygame.transform.scale(_img, (_img.get_width() * _multi, _img.get_height() * _multi))
     del _img, _multi
 
+pygame.mixer.init()
+LASERSOUNDASSET = util.sound_asset("laser.mp3")
+LASERSOUND = pygame.mixer.Sound(LASERSOUNDASSET)
+
+
 MOVESPEED = 512 # ship speed in px/sec
+
 
 from Laser import Laser
 
@@ -80,6 +86,7 @@ class Ship(VisualAsset):
 
     def fire_laser(self) -> Laser:
         """Fire a laser. Returns the Laser instance that was created"""
+        LASERSOUND.play()
         return Laser(self.parent, self.rect, self.rotState)
     
     def get_center(self) -> tuple[int, int]:
