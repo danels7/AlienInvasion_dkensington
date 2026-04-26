@@ -18,10 +18,7 @@ class Stage(ABC):
         """Takes an event and determines what, if anything, to do with it"""
         ...
 
-    # optional
+    @abstractmethod
     def update(self, dt: float) -> None:
-        """
-        Optional implementation: Used to update the state of the Stage (deltatimed)
-        If this function is not implemented, calling it is safe and will do nothing
-        """
+        """Update the state of the Stage (deltatimed)"""
         ...
