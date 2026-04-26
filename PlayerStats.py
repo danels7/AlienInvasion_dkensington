@@ -58,6 +58,7 @@ class PlayerStats:
         self.screen = screen
 
         self.scoreText = FONT.render("Score: 0", False, pygame.Color(0xff, 0xff, 0xff))
+        self.levelText = FONT.render("Level: 0", False, pygame.Color(0xff, 0xff, 0xff))
         self.livesText = FONT.render("Lives:", False, pygame.Color(0xff, 0xff, 0xff))
         self.ship1 = SHIPIMG.copy()
         self.ship2 = SHIPIMG.copy()
@@ -67,6 +68,10 @@ class PlayerStats:
         self.scoreTextRect = self.scoreText.get_rect()
         self.scoreTextRect.x = round((WINDOWWIDTH/2) - (self.scoreTextRect.width/2))
         self.scoreTextRect.y = 0
+
+        self.levelTextRect = self.levelText.get_rect()
+        self.levelTextRect.x = round((WINDOWWIDTH/2) - (self.levelTextRect.width/2))
+        self.levelTextRect.y = self.scoreTextRect.height
 
         self.livesTextRect = self.livesText.get_rect()
         self.livesTextRect.x = 0
@@ -118,6 +123,10 @@ class PlayerStats:
     
     def level_up(self) -> None:
         self.level += 1
+        self.levelText = FONT.render(f"Level: {self.level}", False, pygame.Color(0xff, 0xff, 0xff))
+        self.levelTextRect = self.levelText.get_rect()
+        self.levelTextRect.x = round((WINDOWWIDTH/2) - (self.levelTextRect.width/2))
+        self.levelTextRect.y = self.scoreTextRect.height
 
     def get_level(self) -> int:
         return self.level
@@ -128,6 +137,7 @@ class PlayerStats:
     def draw_stats(self) -> None:
         self.screen.blit(self.scoreText, self.scoreTextRect)
         self.screen.blit(self.highScoreText, self.highScoreTextRect)
+        self.screen.blit(self.levelText, self.levelTextRect)
 
         self.screen.blit(self.livesText, self.livesTextRect)
         displayLives = self.lives - 1
