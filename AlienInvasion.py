@@ -45,6 +45,10 @@ class AlienInvasion:
                     self.running = False
                     pygame.quit()
                     return
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        pygame.quit()
+                        return
                 else:
                     self.currentStage.process_event(event)
 

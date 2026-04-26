@@ -68,8 +68,6 @@ class Game(Stage):
                 self.ship.turn_left()
             elif event.key == pygame.K_x:
                 self.ship.turn_right()
-            elif event.key == pygame.K_ESCAPE:
-                pygame.event.post(pygame.event.Event(pygame.QUIT))
 
         elif event.type == pygame.KEYUP:
             if event.key in self.controls.keys():
