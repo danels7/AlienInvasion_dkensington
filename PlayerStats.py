@@ -91,6 +91,10 @@ class PlayerStats:
 
     def add_score(self, amount: int) -> None:
         self.score += amount
+        self.scoreText = FONT.render(f"Score: {self.score}", False, pygame.Color(0xff, 0xff, 0xff))
+        self.scoreTextRect = self.scoreText.get_rect()
+        self.scoreTextRect.x = round((WINDOWWIDTH/2) - (self.scoreTextRect.width/2))
+        self.scoreTextRect.y = 0
 
     def remove_life(self) -> None:
         self.lives -= 1
