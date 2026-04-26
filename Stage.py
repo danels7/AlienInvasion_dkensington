@@ -13,4 +13,6 @@ class Stage(ABC):
     """This class allows the AlienInvasion class to easily switch between parts of the program"""
 
     @abstractmethod
-    def process_event(self, event: Event) -> None: ...
+    def process_event(self, event: Event) -> None:
+        """Takes an event and determines what, if anything, to do with it"""
+        ...
