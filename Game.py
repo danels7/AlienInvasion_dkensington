@@ -30,6 +30,8 @@ pygame.mixer.init()
 DESTROYSOUNDASSET = util.sound_asset("impactSound.mp3")
 DESTROYSOUND = pygame.mixer.Sound(DESTROYSOUNDASSET)
 
+DESTORYCHANNEL = pygame.mixer.Channel(0)
+
 
 MAXLASERS = 5 # maximum lasers on screen
 
@@ -161,7 +163,7 @@ class Game(Stage):
         for index in lasersToRemove:
             self.lasers.pop(index)
             self.add_score(100)
-            DESTROYSOUND.play()
+            DESTORYCHANNEL.play(DESTROYSOUND)
 
         self.draw()
 

@@ -25,6 +25,8 @@ pygame.mixer.init()
 LASERSOUNDASSET = util.sound_asset("laser.mp3")
 LASERSOUND = pygame.mixer.Sound(LASERSOUNDASSET)
 
+LASERCHANNEL = pygame.mixer.Channel(1)
+
 
 MOVESPEED = 512 # ship speed in px/sec
 
@@ -86,7 +88,7 @@ class Ship(VisualAsset):
 
     def fire_laser(self) -> Laser:
         """Fire a laser. Returns the Laser instance that was created"""
-        LASERSOUND.play()
+        LASERCHANNEL.play(LASERSOUND)
         return Laser(self.parent, self.rect, self.rotState)
     
     def get_center(self) -> tuple[int, int]:
