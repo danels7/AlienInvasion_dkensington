@@ -89,7 +89,8 @@ class PlayerStats:
         self.extraLivesTextRect.y = 0
 
     def save_score(self) -> None:
-        add_score(self.score)
+        if self.score != 0:
+            add_score(self.score)
 
     def add_score(self, amount: int) -> None:
         self.score += amount
