@@ -50,8 +50,7 @@ class AlienInvasion:
                     if event.key == pygame.K_ESCAPE:
                         pygame.quit()
                         return
-                else:
-                    self.currentStage.process_event(event)
+                self.currentStage.process_event(event)
 
             self.currentStage.update(self.clock.tick() / 1000)
 
