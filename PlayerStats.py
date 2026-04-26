@@ -50,3 +50,6 @@ class PlayerStats:
 
     def add_score(self, amount: int):
         self.score += amount
+
+    def remove_life(self):
+        self.lives -= 1
