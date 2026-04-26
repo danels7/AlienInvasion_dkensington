@@ -30,22 +30,22 @@ class AlienInvasion:
         self.currentStage: Stage = self.menu
         self.inGame = False
 
-    def switchToGame(self):
+    def switchToGame(self) -> None:
         self.currentStage = self.game
         self.inGame = True
         self.game.new_game()
 
-    def switchToMenu(self):
+    def switchToMenu(self) -> None:
         self.inGame = False
         self.currentStage = self.menu
 
-    def quit(self):
+    def quit(self) -> None:
         self.running = False
         if self.inGame:
             self.game.game_over()
         pygame.quit()
 
-    def run(self):
+    def run(self) -> None:
         """Runs the game"""
         self.running = True
         while self.running:
