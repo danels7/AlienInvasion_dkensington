@@ -54,6 +54,8 @@ class Game(Stage):
         self.respawnReason = RR_NULL
         self.lastDeathTime = 0
 
+        self.next1up = 250000
+
         self.controls = {
             pygame.K_RIGHT: False,
             pygame.K_LEFT: False,
@@ -67,6 +69,7 @@ class Game(Stage):
         self.respawning = True
         self.respawnReason = RR_STARTING
         self.fleetSpawned = False
+        self.next1up = 250000
         self.lastDeathTime = time.time() - 1
 
     def game_over(self) -> None:
@@ -75,6 +78,9 @@ class Game(Stage):
 
     def add_score(self, amount: int) -> None:
         self.stats.add_score(amount)
+        if self.stats.get_score() >= self.next1up:
+            self.next1up += 250000
+            self.stats.add_life()
 
     @override
     def process_event(self, event: Event) -> None:
