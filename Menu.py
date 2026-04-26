@@ -2,6 +2,7 @@
 Alien Invasion - Menu Class
 Daniel Kensington
 This file defines the class Menu. It represents the menu that is displayed before the main game
+This class inherits from Stage
 4/26/2026
 """
 

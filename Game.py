@@ -2,6 +2,7 @@
 Alien Invasion - Game Class
 Daniel Kensington
 This file defines the class Game. It is responsible for managing the game itself
+This class inherits from Stage
 4/12/2026
 """
 
