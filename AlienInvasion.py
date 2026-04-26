@@ -26,8 +26,14 @@ class AlienInvasion:
         self.running = False
         self.clock = pygame.time.Clock()
         self.game = Game(self.screen)
-        self.menu = Menu(self.screen)
+        self.menu = Menu(self.screen, self.switchToGame)
         self.currentStage: Stage = self.menu
+
+    def switchToGame(self):
+        self.currentStage = self.game
+
+    def switchToMenu(self):
+        self.currentStage = self.menu
 
     def run(self):
         """Runs the game"""
