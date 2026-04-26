@@ -15,6 +15,7 @@ from Fleet import Fleet
 from Stage import Stage
 from AlienInvasion import WINDOWWIDTH, WINDOWHEIGHT
 from typing import override
+from collections.abc import Callable
 import time
 import util
 
@@ -32,7 +33,7 @@ RR_CLEARED = 2
 class Game(Stage):
     """This class manages the game itself. It handles controls, events, assets, etc."""
 
-    def __init__(self, screen: Surface):
+    def __init__(self, screen: Surface, gameOver: Callable[[], None]):
         self.screen = screen.subsurface(0, 0, WINDOWWIDTH, WINDOWHEIGHT)
         self.ship = Ship(self.screen)
         self.fleet = Fleet(self.screen, 15, 5, 30)
@@ -40,6 +41,8 @@ class Game(Stage):
         self.background = BACKGROUNDIMG.copy()
 
         self.screen.blit(self.background, self.screen.get_rect())
+
+        self.gameOverCallback = gameOver
 
         self.lasers: list[Laser] = []
 

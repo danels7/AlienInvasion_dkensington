@@ -25,7 +25,7 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion")
         self.running = False
         self.clock = pygame.time.Clock()
-        self.game = Game(self.screen)
+        self.game = Game(self.screen, self.switchToMenu)
         self.menu = Menu(self.screen, self.switchToGame)
         self.currentStage: Stage = self.menu
 
