@@ -150,6 +150,7 @@ class Game(Stage):
             self.lasers.clear()
             self.respawnReason = RR_DIED
         elif self.fleet.is_fleet_empty():
+            self.stats.add_score(10000)
             self.respawning = True
             self.lastDeathTime = time.time()
             self.lasers.clear()
