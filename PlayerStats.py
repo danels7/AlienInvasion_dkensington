@@ -18,12 +18,12 @@ del file
 #   "<time (unix timestamp)>": <score (integer)>
 # }
 
-def get_high_score():
+def get_high_score() -> int:
     with SCORES.open() as file:
         scores: dict[str, int] = json.load(file)
     return max(scores.values())
     
-def add_score(score: int):
+def add_score(score: int) -> None:
     with SCORES.open() as file:
         scores: dict[str, int] = json.load(file)
     timeStr = str(int(time.time()))
