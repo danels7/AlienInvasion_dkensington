@@ -73,6 +73,9 @@ class Game(Stage):
         self.stats.save_score()
         self.gameOverCallback()
 
+    def add_score(self, amount: int) -> None:
+        self.stats.add_score(amount)
+
     @override
     def process_event(self, event: Event) -> None:
         """Takes an event and determines what, if anything, to do with it"""
@@ -145,7 +148,7 @@ class Game(Stage):
         lasersToRemove = sorted(self.fleet.process_lasers(self.lasers), reverse=True)
         for index in lasersToRemove:
             self.lasers.pop(index)
-            self.stats.add_score(100)
+            self.add_score(100)
 
         self.draw()
 
@@ -156,7 +159,7 @@ class Game(Stage):
             self.lasers.clear()
             self.respawnReason = RR_DIED
         elif self.fleet.is_fleet_empty():
-            self.stats.add_score(10000)
+            self.add_score(10000)
             self.respawning = True
             self.lastDeathTime = time.time()
             self.lasers.clear()
