@@ -116,6 +116,7 @@ class Game(Stage):
                         self.fleet.reset_fleet_pos()
                     elif self.respawnReason == RR_CLEARED or self.respawnReason == RR_STARTING:
                         if not self.fleetSpawned:
+                            self.stats.level_up()
                             self.fleet = Fleet(self.screen, 15, 5, 30 + (20 * log10(self.stats.get_level())))
                             self.fleetSpawned = True
                 self.draw()
