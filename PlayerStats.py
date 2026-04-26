@@ -43,6 +43,7 @@ class PlayerStats:
     def __init__(self):
         self.lives = 3
         self.score = 0
+        self.level = 0
         self.highScore = get_high_score()
 
     def save_score(self) -> None:
@@ -56,3 +57,9 @@ class PlayerStats:
 
     def get_lives(self) -> int:
         return self.lives
+    
+    def level_up(self) -> None:
+        self.level += 1
+
+    def get_level(self) -> int:
+        return self.level
