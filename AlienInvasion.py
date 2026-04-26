@@ -32,6 +32,7 @@ class AlienInvasion:
     def switchToGame(self) -> None:
         """Switches to the game and starts it"""
         self.currentStage = self.game
+        pygame.mouse.set_visible(False)
         self.inGame = True
         self.game.new_game()
 
@@ -39,6 +40,7 @@ class AlienInvasion:
         """Switches to the menu"""
         self.inGame = False
         self.currentStage = self.menu
+        pygame.mouse.set_visible(True)
 
     def quit(self) -> None:
         """Quits pygame"""
