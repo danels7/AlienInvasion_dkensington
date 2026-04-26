@@ -116,6 +116,8 @@ class Game(Stage):
                 if self.lastDeathTime + 1 <= time.time():
                     self.ship = Ship(self.screen)
                     if self.respawnReason == RR_DIED:
+                        if self.stats.get_lives() <= 0:
+                            self.game_over()
                         self.fleet.reset_fleet_pos()
                     elif self.respawnReason == RR_CLEARED or self.respawnReason == RR_STARTING:
                         if not self.fleetSpawned:
